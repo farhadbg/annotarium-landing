@@ -1,718 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Annotarium is a free browser-based LaTeX PDF annotator with marking schemes, annotation libraries, and PDF editing tools. Your documents never leave your browser." />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://annotarium.org/" />
     <meta property="og:title" content="Annotarium - Free LaTeX PDF Annotator" />
     <meta property="og:description" content="Browser-based PDF annotation with LaTeX support. Mark papers, add equations, create marking schemes. Free and private." />
     <meta property="og:image" content="https://app.annotarium.org/assets/OG-annotarium.jpg" />
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Annotarium - Free LaTeX PDF Annotator" />
     <meta name="twitter:description" content="Browser-based PDF annotation with LaTeX support. Mark papers, add equations, create marking schemes. Free and private." />
     <meta name="twitter:image" content="https://app.annotarium.org/assets/OG-annotarium.jpg" />
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+
     <title>Annotarium - Free LaTeX PDF Annotator & Marking Tool</title>
-    <style>
-      :root {
-        --bg-primary: #ffffff;
-        --bg-secondary: #f8fafc;
-        --bg-card: #ffffff;
-        --text-primary: #0f172a;
-        --text-secondary: #475569;
-        --accent: #2563eb;
-        --accent-hover: #1d4ed8;
-        --accent-light: #dbeafe;
-        --accent-glow: rgba(37, 99, 235, 0.2);
-        --border: #e2e8f0;
-        --border-hover: #cbd5e1;
-        --gradient-1: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-        --gradient-2: linear-gradient(135deg, #0891b2 0%, #2563eb 100%);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        background: var(--bg-primary);
-        color: var(--text-primary);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      /* Subtle gradient background */
-      .bg-gradient {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background:
-          radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.08), transparent),
-          radial-gradient(ellipse 60% 40% at 100% 50%, rgba(124, 58, 237, 0.05), transparent),
-          radial-gradient(ellipse 60% 40% at 0% 80%, rgba(8, 145, 178, 0.05), transparent);
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Navigation */
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        padding: 16px 0;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      }
-
-      nav .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 1.5rem;
-        font-weight: 700;
-        text-decoration: none;
-        color: var(--text-primary);
-      }
-
-      .logo span {
-        background: linear-gradient(to right, #2563eb, #7c3aed, #db2777);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradient-shift 3s ease infinite;
-      }
-
-      @keyframes gradient-shift {
-        0%, 100% { background-position: 0% center; }
-        50% { background-position: 100% center; }
-      }
-
-      .logo img {
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 32px;
-        align-items: center;
-      }
-
-      .nav-links a {
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: color 0.2s;
-      }
-
-      .nav-links a:hover {
-        color: var(--text-primary);
-      }
-
-      .nav-links .btn-primary {
-        color: white;
-      }
-
-      .nav-links .btn-primary:hover {
-        color: white;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 12px 24px;
-        border-radius: 10px;
-        font-size: 1rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        border: none;
-      }
-
-      .btn-primary {
-        background: var(--gradient-1);
-        color: white;
-        box-shadow: 0 4px 14px var(--accent-glow);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px var(--accent-glow);
-      }
-
-      .btn-secondary {
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-        border: 1px solid var(--border);
-      }
-
-      .btn-secondary:hover {
-        background: var(--bg-primary);
-        border-color: var(--border-hover);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      }
-
-      /* Hero Section */
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 90px 24px 40px;
-        background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-      }
-
-      .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        background: var(--accent-light);
-        border: 1px solid rgba(37, 99, 235, 0.2);
-        border-radius: 100px;
-        font-size: 0.875rem;
-        color: var(--accent);
-        font-weight: 500;
-        margin-bottom: 24px;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.5rem, 6vw, 3.75rem);
-        font-weight: 800;
-        line-height: 1.15;
-        margin-bottom: 24px;
-        color: var(--text-primary);
-      }
-
-      .hero h1 span {
-        background: var(--gradient-1);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .hero p {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        max-width: 600px;
-        margin-bottom: 40px;
-      }
-
-      .hero-subtitle {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--accent);
-        margin-top: -24px;
-        margin-bottom: 32px;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      /* Video Section */
-      .video-section {
-        padding: 20px 0 60px;
-        background: var(--bg-primary);
-        scroll-margin-top: 80px;
-      }
-
-      .video-section-header {
-        text-align: center;
-        margin-bottom: 24px;
-      }
-
-      .video-section-header h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 8px;
-        color: var(--text-primary);
-      }
-
-      .video-section-header p {
-        color: var(--text-secondary);
-        font-size: 1rem;
-      }
-
-      .video-container {
-        position: relative;
-        max-width: 900px;
-        margin: 0 auto;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow:
-          0 0 0 1px var(--border),
-          0 25px 50px -12px rgba(0, 0, 0, 0.15);
-      }
-
-      .video-container iframe {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        display: block;
-        border: none;
-      }
-
-      /* Features Section */
-      .features {
-        padding: 100px 0;
-        background: var(--bg-secondary);
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 60px;
-      }
-
-      .section-title h2 {
-        font-size: 2.25rem;
-        font-weight: 700;
-        margin-bottom: 16px;
-        color: var(--text-primary);
-      }
-
-      .section-title p {
-        color: var(--text-secondary);
-        font-size: 1.125rem;
-        max-width: 500px;
-        margin: 0 auto;
-      }
-
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
-      }
-
-      .feature-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 32px;
-        transition: all 0.2s ease;
-      }
-
-      .feature-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--border-hover);
-        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
-      }
-
-      .feature-icon {
-        width: 48px;
-        height: 48px;
-        background: var(--gradient-1);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 20px;
-      }
-
-      .feature-icon svg {
-        width: 24px;
-        height: 24px;
-        color: white;
-      }
-
-      .feature-card h3 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin-bottom: 12px;
-        color: var(--text-primary);
-      }
-
-      .feature-card p {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        line-height: 1.6;
-      }
-
-      /* Security Section */
-      .security {
-        padding: 100px 0;
-        background: var(--bg-primary);
-      }
-
-      .security-card {
-        background: linear-gradient(135deg, rgba(8, 145, 178, 0.08) 0%, rgba(37, 99, 235, 0.08) 100%);
-        border: 1px solid rgba(8, 145, 178, 0.15);
-        border-radius: 24px;
-        padding: 60px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
-      }
-
-      .security-content h2 {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-        color: var(--text-primary);
-      }
-
-      .security-content p {
-        color: var(--text-secondary);
-        font-size: 1.1rem;
-        margin-bottom: 24px;
-      }
-
-      .security-list {
-        list-style: none;
-      }
-
-      .security-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        margin-bottom: 16px;
-        color: var(--text-secondary);
-      }
-
-      .security-list li svg {
-        flex-shrink: 0;
-        width: 20px;
-        height: 20px;
-        color: #059669;
-        margin-top: 2px;
-      }
-
-      .security-visual {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .shield-icon {
-        width: 180px;
-        height: 180px;
-        background: var(--gradient-2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 20px 40px rgba(8, 145, 178, 0.2);
-      }
-
-      .shield-icon svg {
-        width: 90px;
-        height: 90px;
-        color: white;
-      }
-
-      /* CTA Section */
-      .cta {
-        padding: 100px 0;
-        text-align: center;
-        background: var(--bg-secondary);
-      }
-
-      .cta h2 {
-        font-size: 2.25rem;
-        font-weight: 700;
-        margin-bottom: 16px;
-        color: var(--text-primary);
-      }
-
-      .cta p {
-        color: var(--text-secondary);
-        font-size: 1.125rem;
-        margin-bottom: 32px;
-      }
-
-      /* Footer */
-      footer {
-        padding: 40px 0;
-        border-top: 1px solid var(--border);
-        text-align: center;
-        background: var(--bg-primary);
-      }
-
-      .footer-links {
-        display: flex;
-        justify-content: center;
-        gap: 32px;
-        margin-bottom: 24px;
-      }
-
-      .footer-links a {
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: color 0.2s;
-      }
-
-      .footer-links a:hover {
-        color: var(--text-primary);
-      }
-
-      .copyright {
-        color: var(--text-secondary);
-        font-size: 0.875rem;
-      }
 
-      /* Responsive */
-      @media (max-width: 768px) {
-        .container {
-          padding: 0 16px;
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+              },
+            },
+            animation: {
+              'gradient-x': 'gradient-x 3s ease infinite',
+            },
+            keyframes: {
+              'gradient-x': {
+                '0%, 100%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'left center'
+                },
+                '50%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'right center'
+                },
+              },
+            },
+          },
+        },
+      }
+    </script>
+
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .text-gradient {
+          @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-pink-600 animate-gradient-x;
         }
-
-        nav {
-          padding: 12px 0;
-        }
-
-        .nav-links a:not(.btn) {
-          display: none;
-        }
-
-        .nav-links {
-          gap: 0;
-        }
-
-        .nav-links .btn {
-          padding: 10px 16px;
-          font-size: 0.875rem;
-        }
-
-        .logo {
-          font-size: 1.25rem;
-        }
-
-        .logo img {
-          width: 28px;
-          height: 28px;
-        }
-
-        .hero {
-          padding: 100px 16px 60px;
-          min-height: auto;
-        }
-
-        .hero h1 {
-          font-size: 2rem;
-        }
-
-        .hero p {
-          font-size: 1rem;
-        }
-
-        .hero-buttons {
-          flex-direction: column;
-          width: 100%;
-        }
-
-        .hero-buttons .btn {
-          width: 100%;
-        }
-
-        .video-section {
-          padding: 20px 0 40px;
-        }
-
-        .video-section-header h2 {
-          font-size: 1.25rem;
-        }
-
-        .video-container {
-          border-radius: 12px;
-        }
-
-        .features {
-          padding: 60px 0;
-        }
-
-        .section-title h2 {
-          font-size: 1.75rem;
-        }
-
-        .section-title {
-          margin-bottom: 40px;
-        }
-
-        .features-grid {
-          grid-template-columns: 1fr;
-          gap: 16px;
-        }
-
-        .feature-card {
-          padding: 24px;
-        }
-
-        .security {
-          padding: 60px 0;
-        }
-
-        .security-card {
-          grid-template-columns: 1fr;
-          padding: 32px 20px;
-          text-align: center;
-          gap: 40px;
-        }
-
-        .security-content h2 {
-          font-size: 1.5rem;
-        }
-
-        .security-visual {
-          order: -1;
-        }
-
-        .shield-icon {
-          width: 120px;
-          height: 120px;
-        }
-
-        .shield-icon svg {
-          width: 60px;
-          height: 60px;
-        }
-
-        .security-list {
-          text-align: left;
-        }
-
-        .security-list li {
-          justify-content: flex-start;
-        }
-
-        .security-content .btn {
-          width: 100%;
-        }
-
-        .cta {
-          padding: 60px 0;
-        }
-
-        .cta h2 {
-          font-size: 1.75rem;
-        }
-
-        .cta .btn {
-          width: 100%;
-          max-width: 300px;
-        }
-
-        footer {
-          padding: 32px 0;
-        }
-
-        .footer-links {
-          flex-direction: column;
-          gap: 16px;
+        .text-gradient-static {
+          @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-pink-600;
         }
       }
 
-      /* Extra small devices */
-      @media (max-width: 380px) {
-        .hero h1 {
-          font-size: 1.75rem;
-        }
+      /* Smooth fade for elements */
+      .fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+      }
 
-        .hero-badge {
-          font-size: 0.75rem;
-          padding: 6px 12px;
-        }
-
-        .feature-card h3 {
-          font-size: 1.1rem;
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
     </style>
   </head>
-  <body>
-    <div class="bg-gradient"></div>
+  <body class="font-sans antialiased text-slate-900 bg-white selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-100/40 rounded-full blur-3xl opacity-50 mix-blend-multiply"></div>
+      <div class="absolute top-0 right-0 w-[800px] h-[600px] bg-purple-100/40 rounded-full blur-3xl opacity-50 mix-blend-multiply"></div>
+      <div class="absolute bottom-0 left-0 w-[800px] h-[600px] bg-cyan-100/40 rounded-full blur-3xl opacity-50 mix-blend-multiply"></div>
+    </div>
 
     <!-- Navigation -->
-    <nav>
-      <div class="container">
-        <a href="/" class="logo">
-          <img src="icon-192.png" alt="Annotarium" />
-          <span>Annotarium</span>
-        </a>
-        <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#security">Security</a>
-          <a href="https://app.annotarium.org" class="btn btn-primary">Launch App</a>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60 supports-[backdrop-filter]:bg-white/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-3 group">
+            <img src="/annotarium-logo.jpg" alt="Annotarium Logo" class="w-8 h-8 rounded-lg shadow-md group-hover:shadow-lg transition-all duration-300 object-cover" />
+            <span class="font-bold text-xl tracking-tight text-slate-900 group-hover:text-gradient transition-all duration-300">Annotarium</span>
+          </a>
+
+          <!-- Desktop Nav -->
+          <div class="hidden md:flex items-center gap-8">
+            <a href="#features" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Features</a>
+            <a href="#security" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Security</a>
+            <a href="https://app.annotarium.org" class="inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 shadow-lg shadow-blue-600/20 hover:shadow-blue-600/30 hover:-translate-y-0.5">
+              Launch App
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button (Simple implementation) -->
+          <div class="md:hidden">
+             <a href="https://app.annotarium.org" class="text-sm font-semibold text-blue-600 hover:text-blue-700">
+               Launch App &rarr;
+             </a>
+          </div>
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold uppercase tracking-wide mb-8 fade-in-up" style="animation-delay: 0.1s;">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
           Free · No sign-in required
         </div>
-        <h1>The <span>LaTeX PDF Annotator</span><br />Built for Academics</h1>
-        <p>Edit PDFs, mark papers, add mathematical equations, and reuse structured feedback — all directly in your browser.</p>
-        <div class="hero-buttons">
-          <a href="https://app.annotarium.org" class="btn btn-primary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+        <!-- Headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 fade-in-up" style="animation-delay: 0.2s;">
+          The <span class="text-gradient">LaTeX PDF Annotator</span><br class="hidden sm:block" />
+          Built for Academics
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed fade-in-up" style="animation-delay: 0.3s;">
+          Edit PDFs, mark papers, add mathematical equations, and reuse structured feedback — all directly in your browser.
+        </p>
+
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in-up" style="animation-delay: 0.4s;">
+          <a href="https://app.annotarium.org" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-white transition-all duration-200 bg-blue-600 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 hover:-translate-y-1">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
             Open Annotarium
           </a>
-          <a href="#video" class="btn btn-secondary">Getting Started Demo</a>
-          <a href="#marking-demo" class="btn btn-secondary">Marking Demo</a>
+          <a href="#video" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-slate-700 transition-all duration-200 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 hover:text-slate-900 shadow-sm hover:shadow-md hover:-translate-y-1">
+            <svg class="w-5 h-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Watch Demo
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Video Section - Getting Started -->
-    <section class="video-section" id="video">
-      <div class="container">
-        <div class="video-section-header">
-          <h2>Getting Started Demo (3min)</h2>
-          <p>Add annotations, images, use the library, PDF editing tools.</p>
+    <!-- Video Section 1 -->
+    <section id="video" class="py-16 bg-slate-50/50 border-y border-slate-100 z-10 relative scroll-mt-24">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl font-bold text-slate-900 mb-2">Getting Started Demo <span class="text-slate-400 font-normal text-lg">(3m7s)</span></h2>
+          <p class="text-slate-600">Add annotations and images, use the comment library, and PDF editing tools.</p>
         </div>
-        <div class="video-container">
+
+        <div class="relative w-full aspect-video bg-slate-900 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-900/5">
           <iframe
+            class="absolute inset-0 w-full h-full"
             src="https://www.youtube-nocookie.com/embed/t0JXdM1qf7U?rel=0"
             title="Getting Started Demo"
             frameborder="0"
@@ -724,15 +192,17 @@
       </div>
     </section>
 
-    <!-- Video Section - Marking Demo -->
-    <section class="video-section" id="marking-demo">
-      <div class="container">
-        <div class="video-section-header">
-          <h2>Marking Demo (2min 47s)</h2>
-          <p>See total marks, stamps, and structured feedback in a real marking workflow.</p>
+    <!-- Video Section 2 -->
+    <section id="marking-demo" class="py-16 bg-white z-10 relative scroll-mt-24">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl font-bold text-slate-900 mb-2">Marking Demo <span class="text-slate-400 font-normal text-lg">(2m47s)</span></h2>
+          <p class="text-slate-600">See total marks, stamps, and structured feedback in a real marking workflow.</p>
         </div>
-        <div class="video-container">
+
+        <div class="relative w-full aspect-video bg-slate-900 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-900/5">
           <iframe
+            class="absolute inset-0 w-full h-full"
             src="https://www.youtube-nocookie.com/embed/ahlVAvQPHFY?rel=0"
             title="Annotarium Marking Demo"
             frameborder="0"
@@ -745,79 +215,95 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features" id="features">
-      <div class="container">
-        <div class="section-title">
-          <h2>Everything You Need</h2>
-          <p>Powerful tools designed for marking papers and annotating PDFs</p>
+    <section id="features" class="py-24 bg-slate-50 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl mb-4">Everything You Need</h2>
+          <p class="text-lg text-slate-600">Powerful tools designed specifically for marking papers and annotating PDFs efficiently.</p>
         </div>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+              <svg class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
               </svg>
             </div>
-            <h3>LaTeX Annotations</h3>
-            <p>Add beautiful mathematical equations and symbols directly onto your PDFs with full LaTeX support.</p>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">LaTeX Annotations</h3>
+            <p class="text-slate-600 leading-relaxed">Add beautiful mathematical equations and symbols directly onto your PDFs with full LaTeX support.</p>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+          <!-- Feature 2 -->
+          <div class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+            <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors duration-300">
+              <svg class="w-6 h-6 text-indigo-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 11l3 3L22 4"/>
                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
               </svg>
             </div>
-            <h3>Marking Schemes</h3>
-            <p>Create structured marking schemes with automatic grade calculation. Perfect for exam marking.</p>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Marking Schemes</h3>
+            <p class="text-slate-600 leading-relaxed">Create structured marking schemes with automatic grade calculation. Perfect for exam marking.</p>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+          <!-- Feature 3 -->
+          <div class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+            <div class="w-12 h-12 bg-sky-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-sky-600 transition-colors duration-300">
+              <svg class="w-6 h-6 text-sky-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="18" height="18" rx="2"/>
                 <path d="M3 9h18M9 21V9"/>
               </svg>
             </div>
-            <h3>Comment Library</h3>
-            <p>Save frequently used comments, feedback, and images. Reuse them across all your documents with one click.</p>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Comment Library</h3>
+            <p class="text-slate-600 leading-relaxed">Save frequently used comments, feedback, and images. Reuse them across all your documents with one click.</p>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+          <!-- Feature 4 -->
+          <div class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors duration-300">
+              <svg class="w-6 h-6 text-purple-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 19l7-7 3 3-7 7-3-3z"/>
                 <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
                 <path d="M2 2l7.586 7.586"/>
                 <circle cx="11" cy="11" r="2"/>
               </svg>
             </div>
-            <h3>Drawing Tools</h3>
-            <p>Freehand pen, highlighter, shapes, arrows, and stamps. Everything you need to annotate effectively.</p>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Drawing Tools</h3>
+            <p class="text-slate-600 leading-relaxed">Freehand pen, highlighter, shapes, arrows, and stamps. Everything you need to annotate effectively.</p>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+          <!-- Feature 5 -->
+          <div class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+            <div class="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rose-600 transition-colors duration-300">
+              <svg class="w-6 h-6 text-rose-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                 <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
               </svg>
             </div>
-            <h3>PDF Editing & Merging</h3>
-            <p>Add, delete, duplicate, and rearrange pages. Merge multiple PDFs. Add custom page templates.</p>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">PDF Editing & Merging</h3>
+            <p class="text-slate-600 leading-relaxed">Add, delete, duplicate, and rearrange pages. Merge multiple PDFs. Add custom page templates.</p>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+          <!-- Feature 6 -->
+          <div class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+            <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 transition-colors duration-300">
+              <svg class="w-6 h-6 text-emerald-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="3" width="20" height="14" rx="2"/>
                 <path d="M8 21h8M12 17v4"/>
               </svg>
             </div>
-            <h3>Works Everywhere</h3>
-            <p>Browser-based. No installation needed. Works on any desktop or laptop with a modern browser.</p>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Works Everywhere</h3>
+            <p class="text-slate-600 leading-relaxed">Browser-based. No installation needed. Works on any desktop or laptop with a modern browser.</p>
           </div>
-          <div class="feature-card" style="position: relative;">
-            <span style="position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%); color: white; font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">Coming Soon</span>
-            <div class="feature-icon" style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(219, 39, 119, 0.15) 100%);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="url(#ai-gradient)" stroke-width="2">
+
+          <!-- Feature AI (Coming Soon) -->
+          <div class="relative group bg-slate-50 rounded-2xl p-8 shadow-inner border border-slate-200 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 opacity-50"></div>
+            <div class="absolute top-4 right-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Coming Soon</div>
+
+            <div class="relative z-10 w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm border border-slate-100">
+              <svg class="w-6 h-6 text-transparent bg-clip-text bg-gradient-to-br from-violet-600 to-fuchsia-600" viewBox="0 0 24 24" fill="none" stroke="url(#ai-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <defs>
                   <linearGradient id="ai-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#7c3aed"/>
@@ -827,65 +313,73 @@
                 <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
               </svg>
             </div>
-            <h3 style="background: linear-gradient(to right, #7c3aed, #db2777); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">AI Assistant</h3>
-            <p>AI-powered grading suggestions, handwriting recognition (OCR), and intelligent feedback generation.</p>
+            <h3 class="relative z-10 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-fuchsia-600 mb-3">AI Assistant</h3>
+            <p class="relative z-10 text-slate-600 leading-relaxed">AI-powered grading suggestions, handwriting recognition (OCR), and intelligent feedback generation.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Security Section -->
-    <section class="security" id="security">
-      <div class="container">
-        <div class="security-card">
-          <div class="security-content">
-            <h2>Your Privacy, Protected</h2>
-            <p>Annotarium is designed with privacy at its core. Your documents never leave your browser.</p>
-            <ul class="security-list">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <path d="M22 4L12 14.01l-3-3"/>
+    <section id="security" class="py-24 bg-white relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-br from-sky-50 to-indigo-50 border border-sky-100 rounded-3xl p-8 lg:p-16 overflow-hidden relative">
+          <!-- Background decoration for card -->
+          <div class="absolute top-0 right-0 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+              <h2 class="text-3xl font-bold text-slate-900 mb-6">Your Privacy, Protected</h2>
+              <p class="text-lg text-slate-600 mb-8">Annotarium is designed with privacy at its core. Architecture that ensures your documents never leave your browser.</p>
+
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3 text-slate-700">
+                  <svg class="w-6 h-6 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <path d="M22 4L12 14.01l-3-3"/>
+                  </svg>
+                  <span>All processing happens locally in your browser</span>
+                </li>
+                <li class="flex items-start gap-3 text-slate-700">
+                  <svg class="w-6 h-6 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <path d="M22 4L12 14.01l-3-3"/>
+                  </svg>
+                  <span>PDFs and annotations are never uploaded to any server</span>
+                </li>
+                <li class="flex items-start gap-3 text-slate-700">
+                  <svg class="w-6 h-6 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <path d="M22 4L12 14.01l-3-3"/>
+                  </svg>
+                  <span>No sign-in required to start using Annotarium</span>
+                </li>
+                <li class="flex items-start gap-3 text-slate-700">
+                   <svg class="w-6 h-6 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <path d="M22 4L12 14.01l-3-3"/>
+                  </svg>
+                  <span>Hosted on Cloudflare, with an A-grade security configuration</span>
+                </li>
+              </ul>
+
+              <div class="mt-10">
+                <a href="/privacy.html" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                  Read Privacy Policy
+                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex justify-center">
+              <div class="w-64 h-64 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/30 ring-8 ring-white/50 backdrop-blur-sm animate-pulse-slow">
+                <svg class="w-32 h-32 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
                 </svg>
-                <span>All processing happens locally in your browser</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <path d="M22 4L12 14.01l-3-3"/>
-                </svg>
-                <span>PDFs and annotations are never uploaded to any server</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <path d="M22 4L12 14.01l-3-3"/>
-                </svg>
-                <span>No sign-in required to start using Annotarium</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <path d="M22 4L12 14.01l-3-3"/>
-                </svg>
-                <span>Optional analytics - you choose what to share</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <path d="M22 4L12 14.01l-3-3"/>
-                </svg>
-                <span>Hosted on Cloudflare, with an A-grade security configuration</span>
-              </li>
-            </ul>
-            <a href="/privacy.html" class="btn btn-secondary" style="margin-top: 16px;">Read Privacy Policy</a>
-          </div>
-          <div class="security-visual">
-            <div class="shield-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <path d="M9 12l2 2 4-4"/>
-              </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -893,14 +387,18 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-links">
-          <a href="/privacy.html">Privacy Policy</a>
-          <a href="/security.html">Security</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfgMV2mBXtzZlTHip7GS5x2sTnHVqCF8msjBqgyOBy1CwfzcA/viewform">Contact</a>
+    <footer class="bg-white border-t border-slate-200 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="flex flex-wrap justify-center gap-8 mb-8">
+          <a href="/privacy.html" class="text-slate-500 hover:text-blue-600 transition-colors text-sm font-medium">Privacy Policy</a>
+          <a href="/security.html" class="text-slate-500 hover:text-blue-600 transition-colors text-sm font-medium">Security</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfgMV2mBXtzZlTHip7GS5x2sTnHVqCF8msjBqgyOBy1CwfzcA/viewform" class="text-slate-500 hover:text-blue-600 transition-colors text-sm font-medium">Contact</a>
         </div>
-        <p class="copyright">Independently developed by an academic, for academics.<br />&copy; 2026 Farhad Babaee. All rights reserved.</p>
+        <p class="text-slate-400 text-sm">
+          Independently developed by an academic, for academics.
+          <br class="hidden sm:inline" />
+          &copy; 2026 Farhad Babaee. All rights reserved.
+        </p>
       </div>
     </footer>
   </body>
