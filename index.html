@@ -255,9 +255,26 @@
 
       /* Video Section */
       .video-section {
-        padding: 20px 0 100px;
+        padding: 20px 0 60px;
         background: var(--bg-primary);
         scroll-margin-top: 80px;
+      }
+
+      .video-section-header {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      .video-section-header h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+      }
+
+      .video-section-header p {
+        color: var(--text-secondary);
+        font-size: 1rem;
       }
 
       .video-container {
@@ -532,7 +549,11 @@
         }
 
         .video-section {
-          padding: 20px 0 60px;
+          padding: 20px 0 40px;
+        }
+
+        .video-section-header h2 {
+          font-size: 1.25rem;
         }
 
         .video-container {
@@ -677,18 +698,39 @@
             </svg>
             Open Annotarium
           </a>
-          <a href="#video" class="btn btn-secondary">Watch 3-min Tutorial</a>
+          <a href="#video" class="btn btn-secondary">Watch Tutorial</a>
+          <a href="#marking-demo" class="btn btn-secondary">Watch Marking Demo</a>
         </div>
       </div>
     </section>
 
-    <!-- Video Section -->
+    <!-- Video Section - Overview -->
     <section class="video-section" id="video">
       <div class="container">
         <div class="video-container">
           <iframe
             src="https://www.youtube-nocookie.com/embed/t0JXdM1qf7U?rel=0"
-            title="Annotarium Demo"
+            title="Annotarium Overview"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section - Marking Demo -->
+    <section class="video-section" id="marking-demo">
+      <div class="container">
+        <div class="video-section-header">
+          <h2>Marking & Grading Demo</h2>
+          <p>See total marks, stamps, and structured feedback in a real marking workflow.</p>
+        </div>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/ahlVAvQPHFY?rel=0"
+            title="Annotarium Marking Demo"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
