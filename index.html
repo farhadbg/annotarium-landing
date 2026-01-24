@@ -69,10 +69,10 @@
     <style type="text/tailwindcss">
       @layer utilities {
         .text-gradient {
-          @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-pink-600 animate-gradient-x;
+          @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient-x;
         }
         .text-gradient-static {
-          @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-pink-600;
+          @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600;
         }
       }
 
@@ -105,9 +105,9 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <!-- Logo -->
-          <a href="/" class="flex items-center gap-3 group">
-            <img src="/annotarium-logo.jpg" alt="Annotarium Logo" class="w-8 h-8 rounded-lg shadow-md group-hover:shadow-lg transition-all duration-300 object-cover" />
-            <span class="font-bold text-xl tracking-tight text-slate-900 group-hover:text-gradient transition-all duration-300">Annotarium</span>
+          <a href="/" class="flex items-center gap-2 group">
+            <img src="/annotarium-logo.jpg" alt="Annotarium Logo" class="w-[42px] h-[42px] rounded-lg shadow-md group-hover:shadow-lg transition-all duration-300 object-cover" />
+            <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">Annotarium</span>
           </a>
 
           <!-- Desktop Nav -->
