@@ -75,68 +75,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-            colors: {
-              primary: {
-                50: '#eff6ff',
-                100: '#dbeafe',
-                500: '#3b82f6',
-                600: '#2563eb',
-                700: '#1d4ed8',
-              },
-            },
-            animation: {
-              'gradient-x': 'gradient-x 3s ease infinite',
-            },
-            keyframes: {
-              'gradient-x': {
-                '0%, 100%': {
-                  'background-size': '200% 200%',
-                  'background-position': 'left center'
-                },
-                '50%': {
-                  'background-size': '200% 200%',
-                  'background-position': 'right center'
-                },
-              },
-            },
-          },
-        },
-      }
-    </script>
-
-    <style type="text/tailwindcss">
-      @layer utilities {
-        .text-gradient {
-          @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient-x;
-        }
-        .text-gradient-static {
-          @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600;
-        }
-      }
-
-      /* Smooth fade for elements */
-      .fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
+    <!-- Tailwind CSS (built) -->
+    <link rel="stylesheet" href="/styles.css">
   </head>
   <body class="font-sans antialiased text-slate-900 bg-white selection:bg-indigo-100 selection:text-indigo-900">
 
