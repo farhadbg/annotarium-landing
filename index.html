@@ -127,7 +127,7 @@
 
         <!-- Headline -->
         <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 fade-in-up" style="animation-delay: 0.2s;">
-          A <span class="text-gradient">LaTeX PDF Annotator</span><br class="hidden sm:block" />
+          A <span style="background: linear-gradient(to right, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">LaTeX PDF Annotator</span><br class="hidden sm:block" />
           for Academic Work
         </h1>
 
@@ -279,6 +279,31 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 mb-3">Works Everywhere</h3>
             <p class="text-slate-600 leading-relaxed">Runs in any modern browser. No installation needed.</p>
+          </div>
+
+          <!-- Feature: Editable .annot Files -->
+          <div class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300" style="background-color: #fef3c7;" onmouseover="this.style.backgroundColor='#d97706'" onmouseout="this.style.backgroundColor='#fef3c7'">
+              <svg class="w-6 h-6 group-hover:text-white transition-colors" style="color: #d97706;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+                <path d="M9 15l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Editable .annot Files</h3>
+            <p class="text-slate-600 leading-relaxed">Save PDFs and annotations separately, so work stays fully editable. Reopen and continue where you left off.</p>
+          </div>
+
+          <!-- Feature: Optional File Encryption -->
+          <div class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300" style="background-color: #cffafe;" onmouseover="this.style.backgroundColor='#0891b2'" onmouseout="this.style.backgroundColor='#cffafe'">
+              <svg class="w-6 h-6 group-hover:text-white transition-colors" style="color: #0891b2;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Optional File Encryption</h3>
+            <p class="text-slate-600 leading-relaxed">Protect annotated work with password-encrypted .annot files (PBKDF2 + AES-256-GCM).</p>
           </div>
 
           <!-- Feature AI (Coming Soon) -->
