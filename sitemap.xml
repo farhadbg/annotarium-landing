@@ -3,25 +3,41 @@
   <url>
     <loc>https://annotarium.org/</loc>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://annotarium.org/landing.html</loc>
-    <priority>1.0</priority>
+    <loc>https://annotarium.org/for-academics</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://annotarium.org/blackboard-bulk-marking</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://annotarium.org/how-to-annotate-pdf-with-latex</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://annotarium.org/faq.html</loc>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://annotarium.org/security.html</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://annotarium.org/privacy.html</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://app.annotarium.org/</loc>
-    <priority>0.9</priority>
+    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
   </url>
 </urlset>
