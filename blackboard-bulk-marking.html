@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="meta.title">Bulk Mark Blackboard Submissions in Annotarium — Local PDF Annotation</title>
-  <meta name="description" content="Mark Blackboard assignment submissions in bulk. Open the downloaded ZIP, annotate with LaTeX, apply consistent feedback, export marked PDFs back. No uploads, no sign-in.">
+  <meta name="description" content="Mark a folder of Blackboard submissions on desktop, or open the ZIP directly on iPad. Annotate with LaTeX, apply a marking scheme, reuse comments, export marked PDFs. No uploads, no sign-in.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://annotarium.org/blackboard-bulk-marking">
   <link rel="alternate" hreflang="en" href="https://annotarium.org/blackboard-bulk-marking" />
   <link rel="alternate" hreflang="x-default" href="https://annotarium.org/blackboard-bulk-marking" />
   <meta property="og:title" content="Bulk Mark Blackboard Submissions in Annotarium">
-  <meta property="og:description" content="Mark Blackboard ZIP submissions in your browser with LaTeX support and reusable feedback.">
+  <meta property="og:description" content="Mark Blackboard submissions in your browser with LaTeX support and reusable feedback.">
   <meta property="og:url" content="https://annotarium.org/blackboard-bulk-marking">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://app.annotarium.org/assets/OG-annotarium.jpg">
@@ -31,13 +31,15 @@
     "@context": "https://schema.org",
     "@type": "HowTo",
     "name": "How to bulk-mark Blackboard submissions in Annotarium",
-    "description": "Step-by-step process for marking a Blackboard ZIP of student submissions in Annotarium.",
+    "description": "Step-by-step process for marking Blackboard student submissions in Annotarium on desktop (folder) or iPad (ZIP).",
     "step": [
       {"@type": "HowToStep", "position": 1, "name": "Download submissions from Blackboard", "text": "In your Blackboard course, go to Grade Centre, open the assignment, and use 'Assignment File Download' to download all submissions as a single ZIP."},
-      {"@type": "HowToStep", "position": 2, "name": "Open the ZIP in Annotarium", "text": "Open Annotarium, switch to Blackboard mode, and drop the ZIP onto the workspace."},
-      {"@type": "HowToStep", "position": 3, "name": "Mark the first submission", "text": "Use the LaTeX, pen, highlighter, and comment library tools."},
-      {"@type": "HowToStep", "position": 4, "name": "Move through submissions", "text": "Click the next submission in the sidebar."},
-      {"@type": "HowToStep", "position": 5, "name": "Export marked PDFs", "text": "Export the marked submissions as a folder of flattened PDFs."}
+      {"@type": "HowToStep", "position": 2, "name": "On desktop: unzip the file", "text": "On desktop, unzip the downloaded file to a folder. Annotarium's desktop import requires a folder (not a ZIP) because it uses the browser's folder picker."},
+      {"@type": "HowToStep", "position": 3, "name": "Open the folder (desktop) or the ZIP (iPad) in Annotarium", "text": "In Annotarium, click the File menu. On desktop, choose 'Blackboard folder' and select the unzipped folder. On iPad or mobile, choose 'Blackboard ZIP' and select the downloaded ZIP directly. Annotarium detects your device and shows the right option."},
+      {"@type": "HowToStep", "position": 4, "name": "Browse students in the sidebar", "text": "The sidebar lists every student folder. Click a student and press 'Load' to open that submission."},
+      {"@type": "HowToStep", "position": 5, "name": "Mark with LaTeX and the comment library", "text": "Use the pen, highlighter, LaTeX equation tool, and comment library. Open the 'Scheme' panel to define per-question marks; the scheme auto-saves per student."},
+      {"@type": "HowToStep", "position": 6, "name": "Save and move to the next student", "text": "Press 'Marked!' to save the marked PDF and marking scheme for that student and return to the sidebar."},
+      {"@type": "HowToStep", "position": 7, "name": "Export everything", "text": "When all students are done, press 'Finito!' to export the marked submissions as a ZIP ready to re-upload through Blackboard's bulk upload."}
     ]
   }
   </script>
@@ -46,14 +48,16 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question", "name": "Does Annotarium handle the Blackboard ZIP format directly?",
-       "acceptedAnswer": {"@type": "Answer", "text": "Yes. Annotarium reads the ZIP that Blackboard's 'Assignment File Download' produces, including the per-student folder structure and metadata files."}},
+      {"@type": "Question", "name": "Does Annotarium accept the Blackboard ZIP directly?",
+       "acceptedAnswer": {"@type": "Answer", "text": "On iPad and mobile, yes — use File > Blackboard ZIP and select the ZIP. On desktop, unzip the file first and use File > Blackboard folder, because the desktop import uses the browser's folder picker. Annotarium auto-detects your device and shows the correct option."}},
       {"@type": "Question", "name": "Can I apply the same comment to many students?",
-       "acceptedAnswer": {"@type": "Answer", "text": "Yes. Save the comment to your library once, then drop it onto any submission with one click."}},
+       "acceptedAnswer": {"@type": "Answer", "text": "Yes. The comment library is stored in your browser and shared across every student in the session. Save a comment once, then drop it onto any submission with one click."}},
+      {"@type": "Question", "name": "Does the marking scheme reset for each student?",
+       "acceptedAnswer": {"@type": "Answer", "text": "The structure (number of questions, sub-parts, max marks) persists. The marks themselves are saved per student as a .ankx.json file inside a Marking_progress folder so each student keeps their own totals."}},
       {"@type": "Question", "name": "Are the student PDFs uploaded anywhere?",
-       "acceptedAnswer": {"@type": "Answer", "text": "No. The ZIP is processed entirely in your browser. No part of the submission is sent to a server."}},
+       "acceptedAnswer": {"@type": "Answer", "text": "No. The folder or ZIP is processed entirely in your browser. No part of the submission is sent to a server."}},
       {"@type": "Question", "name": "Can I re-upload the marked PDFs to Blackboard?",
-       "acceptedAnswer": {"@type": "Answer", "text": "Yes. Export the marked submissions as a folder of flattened PDFs."}}
+       "acceptedAnswer": {"@type": "Answer", "text": "Yes. Press 'Finito!' when you're done and Annotarium exports a ZIP of the marked submissions. Each file keeps its original filename so they can be returned through Blackboard's bulk upload."}}
     ]
   }
   </script>
@@ -78,10 +82,16 @@
     li { margin-bottom: 0.5rem; }
     .step { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; }
     .step h3 { margin-top: 0; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+    .split .col { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; }
+    .split .col h4 { margin: 0 0 8px; font-size: 0.95rem; color: #0f172a; }
+    .split .col p { margin: 0; font-size: 0.95rem; }
+    @media (max-width: 640px) { .split { grid-template-columns: 1fr; } }
     .faq-item { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; }
     .faq-item h3 { font-size: 1.05rem; margin: 0 0 10px 0; color: #0f172a; }
     .faq-item p { margin: 0; color: #475569; }
     a { color: #2563eb; }
+    code { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 4px; padding: 1px 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; color: #0f172a; }
     .related { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-top: 2rem; }
     .related h3 { margin-top: 0; }
     .cta { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 1rem 0; }
@@ -106,66 +116,96 @@
   </div>
 
   <h1 data-i18n="page.h1">Bulk Mark Blackboard Submissions in Annotarium</h1>
-  <p class="subtitle" data-i18n="page.sub">Open the ZIP that Blackboard hands you, mark every student in one session, and export a folder of marked PDFs ready to return — entirely in your browser.</p>
+  <p class="subtitle" data-i18n="page.sub">Download the ZIP Blackboard hands you, mark every student in one session, and export a ZIP of marked PDFs ready to return — entirely in your browser.</p>
 
   <a class="cta" href="https://app.annotarium.org" data-i18n="cta.open">Open Annotarium</a>
 
-  <h2 data-i18n="s1.h2">The problem with Blackboard's built-in marking</h2>
-  <p data-i18n="s1.p1">Blackboard's in-browser annotator works for short assignments but quickly becomes a bottleneck for technical work. There is no LaTeX support for mathematical feedback, no proper comment library for reusing the same explanation across students, and the per-student loading is slow when you have a hundred submissions to get through.</p>
-  <p data-i18n="s1.p2">The standard workaround is to use 'Assignment File Download' to grab all submissions as a ZIP, mark them in a desktop tool, then re-upload. Annotarium fits exactly into that workflow — but without leaving the browser.</p>
+  <h2 data-i18n="s1.h2">Desktop or iPad — Annotarium auto-detects</h2>
+  <p data-i18n="s1.p">Annotarium shows the right import option depending on your device. There is no "mode" to toggle.</p>
+  <div class="split">
+    <div class="col">
+      <h4 data-i18n="s1.desktop.h">Desktop (Chrome, Edge)</h4>
+      <p data-i18n="s1.desktop.p">File &rarr; <strong>Blackboard folder</strong>. Select the unzipped folder of submissions.</p>
+    </div>
+    <div class="col">
+      <h4 data-i18n="s1.ipad.h">iPad / Mobile</h4>
+      <p data-i18n="s1.ipad.p">File &rarr; <strong>Blackboard ZIP</strong>. Select the ZIP directly — no need to unzip.</p>
+    </div>
+  </div>
 
-  <h2 data-i18n="s2.h2">Step-by-step: bulk marking a Blackboard ZIP</h2>
+  <h2 data-i18n="s2.h2">Step-by-step workflow</h2>
 
   <div class="step">
     <h3 data-i18n="s2.step1H">1. Download the submissions ZIP from Blackboard</h3>
     <p data-i18n-html="s2.step1P">In your Blackboard course, go to <strong>Grade Centre</strong> &rarr; the assignment column &rarr; <strong>Assignment File Download</strong>. Select all students and download the ZIP.</p>
   </div>
   <div class="step">
-    <h3 data-i18n="s2.step2H">2. Open Annotarium and switch to Blackboard mode</h3>
-    <p data-i18n-html="s2.step2P">Open <a href="https://app.annotarium.org">app.annotarium.org</a>, then switch to Blackboard mode from the toolbar. Drop the ZIP onto the workspace. Annotarium reads the per-student folder structure automatically.</p>
+    <h3 data-i18n="s2.step2H">2. On desktop, unzip to a folder (iPad users skip this)</h3>
+    <p data-i18n="s2.step2P">On desktop, unzip the downloaded file so you have a folder containing one subfolder per student plus the Blackboard metadata files. On iPad or mobile, skip this step — Annotarium opens the ZIP directly.</p>
   </div>
   <div class="step">
-    <h3 data-i18n="s2.step3H">3. Set up your marking scheme once</h3>
-    <p data-i18n="s2.step3P">Define the per-question marks for the assignment (e.g. Q1: 10, Q2: 15, Q3: 5). The scheme is reused across every submission in the ZIP, and each student gets their own running total.</p>
+    <h3 data-i18n="s2.step3H">3. Open the submissions in Annotarium</h3>
+    <p data-i18n-html="s2.step3P">Open <a href="https://app.annotarium.org">app.annotarium.org</a>, open the <strong>File</strong> menu, then:</p>
+    <ul>
+      <li data-i18n-html="s2.step3LiA">On desktop, choose <strong>Blackboard folder</strong> and select the unzipped folder.</li>
+      <li data-i18n-html="s2.step3LiB">On iPad or mobile, choose <strong>Blackboard ZIP</strong> and select the ZIP.</li>
+    </ul>
+    <p data-i18n="s2.step3Tail">The sidebar populates with one entry per student.</p>
   </div>
   <div class="step">
-    <h3 data-i18n="s2.step4H">4. Build a comment library as you go</h3>
-    <p data-i18n="s2.step4P">The first time you write a comment you'd reuse ("Differentiate before substituting", "Check sign convention"), save it to the library. After two or three submissions the library covers most of what you need.</p>
+    <h3 data-i18n="s2.step4H">4. Click a student and press Load</h3>
+    <p data-i18n-html="s2.step4P">Click a student in the sidebar, then press <strong>Load</strong> in the top toolbar. That student's PDF opens in the main workspace.</p>
   </div>
   <div class="step">
-    <h3 data-i18n="s2.step5H">5. Mark each submission</h3>
-    <p data-i18n="s2.step5P">Use the sidebar to move through students. Use the pen, highlighter, LaTeX equation tool, and comment library. The marking scheme tracks the running total per question.</p>
+    <h3 data-i18n="s2.step5H">5. Set up the marking scheme once</h3>
+    <p data-i18n-html="s2.step5P">Open the <strong>Scheme</strong> panel and define the per-question marks and sub-parts for this assignment (e.g. Q1: 10, Q2: 15, Q3: 5). The scheme structure is reused across every student; each student's marks save independently to <code>Marking_progress/[student].ankx.json</code>.</p>
   </div>
   <div class="step">
-    <h3 data-i18n="s2.step6H">6. Export marked PDFs back to a folder</h3>
-    <p data-i18n="s2.step6P">Export all marked submissions as a folder of flattened PDFs. Filenames are preserved so they can be re-uploaded through Blackboard's bulk upload.</p>
+    <h3 data-i18n="s2.step6H">6. Build a comment library as you go</h3>
+    <p data-i18n="s2.step6P">The first time you write a comment you'd reuse ("Differentiate before substituting", "Check sign convention"), save it to the comment library. The library is stored in your browser and shared across every student in this session — comments you write for student 3 are available for student 73.</p>
+  </div>
+  <div class="step">
+    <h3 data-i18n="s2.step7H">7. Mark with LaTeX, pen, and the comment library</h3>
+    <p data-i18n="s2.step7P">Use the pen, highlighter, LaTeX equation tool, and comment library. The marking scheme tracks the running total per question and the overall total.</p>
+  </div>
+  <div class="step">
+    <h3 data-i18n="s2.step8H">8. Press "Marked!" when done with a student</h3>
+    <p data-i18n-html="s2.step8P">The <strong>Marked!</strong> button saves a flattened marked PDF and the student's marking scheme, then returns you to the sidebar so you can pick the next student. The sidebar shows a green check next to students you've marked.</p>
+  </div>
+  <div class="step">
+    <h3 data-i18n="s2.step9H">9. Press "Finito!" at the end</h3>
+    <p data-i18n-html="s2.step9P">Once every student is marked, the <strong>Finito!</strong> button appears in the toolbar. It exports a single ZIP containing all the marked submissions, ready to re-upload through Blackboard's bulk upload.</p>
   </div>
 
   <h2 data-i18n="s3.h2">Why this workflow is faster</h2>
   <ul>
-    <li data-i18n-html="s3.li1"><strong>One marking scheme, many students</strong> — define once, applied everywhere.</li>
-    <li data-i18n-html="s3.li2"><strong>One comment library, many students</strong> — the comments you write for student 3 are available for student 73.</li>
+    <li data-i18n-html="s3.li1"><strong>One marking scheme, many students</strong> — the structure is defined once and applied everywhere.</li>
+    <li data-i18n-html="s3.li2"><strong>One comment library, many students</strong> — the comments you write for the 3rd student are available for the 73rd.</li>
     <li data-i18n-html="s3.li3"><strong>LaTeX feedback</strong> — type <code>$\partial f / \partial x$</code> instead of describing it.</li>
     <li data-i18n-html="s3.li4"><strong>No upload latency</strong> — everything runs in the browser, so navigation is instant.</li>
-    <li data-i18n-html="s3.li5"><strong>No data leaves your laptop</strong> — student submissions stay local.</li>
+    <li data-i18n-html="s3.li5"><strong>No data leaves your device</strong> — student submissions stay local.</li>
   </ul>
 
   <h2 data-i18n="faq.h2">FAQ</h2>
   <div class="faq-item">
-    <h3 data-i18n="faq.q1">Does Annotarium handle the Blackboard ZIP format directly?</h3>
-    <p data-i18n="faq.a1">Yes. Annotarium reads the ZIP that Blackboard's "Assignment File Download" produces, including the per-student folder structure and metadata files.</p>
+    <h3 data-i18n="faq.q1">Does Annotarium accept the Blackboard ZIP directly?</h3>
+    <p data-i18n="faq.a1">On iPad and mobile, yes — use File &rarr; Blackboard ZIP and select the ZIP. On desktop, unzip the file first and use File &rarr; Blackboard folder, because the desktop import uses the browser's folder picker. Annotarium auto-detects your device and shows the correct option.</p>
   </div>
   <div class="faq-item">
     <h3 data-i18n="faq.q2">Can I apply the same comment to many students?</h3>
-    <p data-i18n="faq.a2">Yes. Save the comment to your library once, then drop it onto any submission with one click. Comments can include LaTeX, images, and structured feedback text.</p>
+    <p data-i18n="faq.a2">Yes. The comment library is stored in your browser and shared across every student in the session. Save a comment once, then drop it onto any submission with one click. Comments can include LaTeX, images, and structured feedback text.</p>
   </div>
   <div class="faq-item">
-    <h3 data-i18n="faq.q3">Are the student PDFs uploaded anywhere?</h3>
-    <p data-i18n="faq.a3">No. The ZIP is processed entirely in your browser. No part of the submission is sent to a server.</p>
+    <h3 data-i18n="faq.q3">Does the marking scheme reset for each student?</h3>
+    <p data-i18n="faq.a3">The structure (number of questions, sub-parts, max marks) persists. The marks themselves are saved per student inside a Marking_progress folder so each student keeps their own totals. When you open a student who already has a saved scheme, Annotarium reloads it automatically.</p>
   </div>
   <div class="faq-item">
-    <h3 data-i18n="faq.q4">Can I re-upload the marked PDFs to Blackboard?</h3>
-    <p data-i18n="faq.a4">Yes. Export the marked submissions as a folder of flattened PDFs. Each file keeps the original filename so they can be returned to students through Blackboard's standard upload.</p>
+    <h3 data-i18n="faq.q4">Are the student PDFs uploaded anywhere?</h3>
+    <p data-i18n="faq.a4">No. The folder or ZIP is processed entirely in your browser. No part of the submission is sent to a server.</p>
+  </div>
+  <div class="faq-item">
+    <h3 data-i18n="faq.q5">Can I re-upload the marked PDFs to Blackboard?</h3>
+    <p data-i18n="faq.a5">Yes. Press "Finito!" when you're done and Annotarium exports a ZIP of the marked submissions. Each file keeps its original filename so they can be returned through Blackboard's bulk upload.</p>
   </div>
 
   <div class="related">
@@ -187,193 +227,193 @@
   (function(){
     var T = {
       en: {
-        'meta.title': "Bulk Mark Blackboard Submissions in Annotarium — Local PDF Annotation",
+        'meta.title': 'Bulk Mark Blackboard Submissions in Annotarium — Local PDF Annotation',
         'crumb.home': 'Annotarium', 'crumb.this': 'Blackboard Bulk Marking',
         'page.h1': 'Bulk Mark Blackboard Submissions in Annotarium',
-        'page.sub': 'Open the ZIP that Blackboard hands you, mark every student in one session, and export a folder of marked PDFs ready to return — entirely in your browser.',
+        'page.sub': 'Download the ZIP Blackboard hands you, mark every student in one session, and export a ZIP of marked PDFs ready to return — entirely in your browser.',
         'cta.open': 'Open Annotarium',
-        's1.h2': "The problem with Blackboard's built-in marking",
-        's1.p1': "Blackboard's in-browser annotator works for short assignments but quickly becomes a bottleneck for technical work. There is no LaTeX support for mathematical feedback, no proper comment library for reusing the same explanation across students, and the per-student loading is slow when you have a hundred submissions to get through.",
-        's1.p2': "The standard workaround is to use 'Assignment File Download' to grab all submissions as a ZIP, mark them in a desktop tool, then re-upload. Annotarium fits exactly into that workflow — but without leaving the browser.",
-        's2.h2': 'Step-by-step: bulk marking a Blackboard ZIP',
-        's2.step1H': '1. Download the submissions ZIP from Blackboard',
-        's2.step1P': 'In your Blackboard course, go to <strong>Grade Centre</strong> &rarr; the assignment column &rarr; <strong>Assignment File Download</strong>. Select all students and download the ZIP.',
-        's2.step2H': '2. Open Annotarium and switch to Blackboard mode',
-        's2.step2P': 'Open <a href="https://app.annotarium.org">app.annotarium.org</a>, then switch to Blackboard mode from the toolbar. Drop the ZIP onto the workspace. Annotarium reads the per-student folder structure automatically.',
-        's2.step3H': '3. Set up your marking scheme once',
-        's2.step3P': 'Define the per-question marks for the assignment (e.g. Q1: 10, Q2: 15, Q3: 5). The scheme is reused across every submission in the ZIP, and each student gets their own running total.',
-        's2.step4H': '4. Build a comment library as you go',
-        's2.step4P': 'The first time you write a comment you\'d reuse ("Differentiate before substituting", "Check sign convention"), save it to the library. After two or three submissions the library covers most of what you need.',
-        's2.step5H': '5. Mark each submission',
-        's2.step5P': 'Use the sidebar to move through students. Use the pen, highlighter, LaTeX equation tool, and comment library. The marking scheme tracks the running total per question.',
-        's2.step6H': '6. Export marked PDFs back to a folder',
-        's2.step6P': "Export all marked submissions as a folder of flattened PDFs. Filenames are preserved so they can be re-uploaded through Blackboard's bulk upload.",
+        's1.h2': 'Desktop or iPad — Annotarium auto-detects',
+        's1.p': 'Annotarium shows the right import option depending on your device. There is no "mode" to toggle.',
+        's1.desktop.h': 'Desktop (Chrome, Edge)', 's1.desktop.p': 'File \u2192 <strong>Blackboard folder</strong>. Select the unzipped folder of submissions.',
+        's1.ipad.h': 'iPad / Mobile', 's1.ipad.p': 'File \u2192 <strong>Blackboard ZIP</strong>. Select the ZIP directly — no need to unzip.',
+        's2.h2': 'Step-by-step workflow',
+        's2.step1H': '1. Download the submissions ZIP from Blackboard', 's2.step1P': 'In your Blackboard course, go to <strong>Grade Centre</strong> &rarr; the assignment column &rarr; <strong>Assignment File Download</strong>. Select all students and download the ZIP.',
+        's2.step2H': '2. On desktop, unzip to a folder (iPad users skip this)', 's2.step2P': 'On desktop, unzip the downloaded file so you have a folder containing one subfolder per student plus the Blackboard metadata files. On iPad or mobile, skip this step — Annotarium opens the ZIP directly.',
+        's2.step3H': '3. Open the submissions in Annotarium', 's2.step3P': 'Open <a href="https://app.annotarium.org">app.annotarium.org</a>, open the <strong>File</strong> menu, then:',
+        's2.step3LiA': 'On desktop, choose <strong>Blackboard folder</strong> and select the unzipped folder.',
+        's2.step3LiB': 'On iPad or mobile, choose <strong>Blackboard ZIP</strong> and select the ZIP.',
+        's2.step3Tail': 'The sidebar populates with one entry per student.',
+        's2.step4H': '4. Click a student and press Load', 's2.step4P': 'Click a student in the sidebar, then press <strong>Load</strong> in the top toolbar. That student\'s PDF opens in the main workspace.',
+        's2.step5H': '5. Set up the marking scheme once', 's2.step5P': 'Open the <strong>Scheme</strong> panel and define the per-question marks and sub-parts for this assignment (e.g. Q1: 10, Q2: 15, Q3: 5). The scheme structure is reused across every student; each student\'s marks save independently to <code>Marking_progress/[student].ankx.json</code>.',
+        's2.step6H': '6. Build a comment library as you go', 's2.step6P': 'The first time you write a comment you\'d reuse ("Differentiate before substituting", "Check sign convention"), save it to the comment library. The library is stored in your browser and shared across every student in this session — comments you write for student 3 are available for student 73.',
+        's2.step7H': '7. Mark with LaTeX, pen, and the comment library', 's2.step7P': 'Use the pen, highlighter, LaTeX equation tool, and comment library. The marking scheme tracks the running total per question and the overall total.',
+        's2.step8H': '8. Press "Marked!" when done with a student', 's2.step8P': 'The <strong>Marked!</strong> button saves a flattened marked PDF and the student\'s marking scheme, then returns you to the sidebar so you can pick the next student. The sidebar shows a green check next to students you\'ve marked.',
+        's2.step9H': '9. Press "Finito!" at the end', 's2.step9P': 'Once every student is marked, the <strong>Finito!</strong> button appears in the toolbar. It exports a single ZIP containing all the marked submissions, ready to re-upload through Blackboard\'s bulk upload.',
         's3.h2': 'Why this workflow is faster',
-        's3.li1': '<strong>One marking scheme, many students</strong> — define once, applied everywhere.',
-        's3.li2': '<strong>One comment library, many students</strong> — the comments you write for student 3 are available for student 73.',
+        's3.li1': '<strong>One marking scheme, many students</strong> — the structure is defined once and applied everywhere.',
+        's3.li2': '<strong>One comment library, many students</strong> — the comments you write for the 3rd student are available for the 73rd.',
         's3.li3': '<strong>LaTeX feedback</strong> — type <code>$\\partial f / \\partial x$</code> instead of describing it.',
         's3.li4': '<strong>No upload latency</strong> — everything runs in the browser, so navigation is instant.',
-        's3.li5': '<strong>No data leaves your laptop</strong> — student submissions stay local.',
+        's3.li5': '<strong>No data leaves your device</strong> — student submissions stay local.',
         'faq.h2': 'FAQ',
-        'faq.q1': 'Does Annotarium handle the Blackboard ZIP format directly?', 'faq.a1': 'Yes. Annotarium reads the ZIP that Blackboard\'s "Assignment File Download" produces, including the per-student folder structure and metadata files.',
-        'faq.q2': 'Can I apply the same comment to many students?', 'faq.a2': 'Yes. Save the comment to your library once, then drop it onto any submission with one click. Comments can include LaTeX, images, and structured feedback text.',
-        'faq.q3': 'Are the student PDFs uploaded anywhere?', 'faq.a3': 'No. The ZIP is processed entirely in your browser. No part of the submission is sent to a server.',
-        'faq.q4': 'Can I re-upload the marked PDFs to Blackboard?', 'faq.a4': "Yes. Export the marked submissions as a folder of flattened PDFs. Each file keeps the original filename so they can be returned to students through Blackboard's standard upload.",
-        'rel.h3': 'Related',
-        'rel.acad': 'Annotarium for academics — full overview',
-        'rel.latex': 'How to annotate a PDF with LaTeX',
+        'faq.q1': 'Does Annotarium accept the Blackboard ZIP directly?', 'faq.a1': 'On iPad and mobile, yes — use File \u2192 Blackboard ZIP and select the ZIP. On desktop, unzip the file first and use File \u2192 Blackboard folder, because the desktop import uses the browser\'s folder picker. Annotarium auto-detects your device and shows the correct option.',
+        'faq.q2': 'Can I apply the same comment to many students?', 'faq.a2': 'Yes. The comment library is stored in your browser and shared across every student in the session. Save a comment once, then drop it onto any submission with one click. Comments can include LaTeX, images, and structured feedback text.',
+        'faq.q3': 'Does the marking scheme reset for each student?', 'faq.a3': 'The structure (number of questions, sub-parts, max marks) persists. The marks themselves are saved per student inside a Marking_progress folder so each student keeps their own totals. When you open a student who already has a saved scheme, Annotarium reloads it automatically.',
+        'faq.q4': 'Are the student PDFs uploaded anywhere?', 'faq.a4': 'No. The folder or ZIP is processed entirely in your browser. No part of the submission is sent to a server.',
+        'faq.q5': 'Can I re-upload the marked PDFs to Blackboard?', 'faq.a5': 'Yes. Press "Finito!" when you\'re done and Annotarium exports a ZIP of the marked submissions. Each file keeps its original filename so they can be returned through Blackboard\'s bulk upload.',
+        'rel.h3': 'Related', 'rel.acad': 'Annotarium for academics — full overview', 'rel.latex': 'How to annotate a PDF with LaTeX',
         'ft.home': 'Home', 'ft.faq': 'FAQ', 'ft.privacy': 'Privacy', 'ft.security': 'Security'
       },
       es: {
         'meta.title': 'Corrige envíos de Blackboard en bloque con Annotarium',
         'crumb.home': 'Annotarium', 'crumb.this': 'Marcado en Blackboard',
         'page.h1': 'Corrige envíos de Blackboard en bloque con Annotarium',
-        'page.sub': 'Abre el ZIP que te entrega Blackboard, corrige a todos los estudiantes en una sola sesión y exporta una carpeta de PDF corregidos lista para devolver — todo en el navegador.',
+        'page.sub': 'Descarga el ZIP que te entrega Blackboard, corrige a todos los estudiantes en una sola sesión y exporta un ZIP de PDF corregidos listo para devolver — todo en el navegador.',
         'cta.open': 'Abrir Annotarium',
-        's1.h2': 'El problema con la corrección integrada de Blackboard',
-        's1.p1': 'El anotador integrado de Blackboard funciona para tareas cortas, pero se vuelve un cuello de botella en trabajos técnicos. No hay soporte LaTeX para retroalimentación matemática, no hay biblioteca de comentarios real para reutilizar la misma explicación entre estudiantes, y la carga por estudiante es lenta cuando tienes cien envíos por revisar.',
-        's1.p2': 'La solución habitual es usar "Assignment File Download" para descargar todos los envíos como ZIP, corregirlos en una herramienta de escritorio y volver a subirlos. Annotarium encaja exactamente en ese flujo — pero sin salir del navegador.',
-        's2.h2': 'Paso a paso: corregir un ZIP de Blackboard en bloque',
-        's2.step1H': '1. Descarga el ZIP de envíos desde Blackboard',
-        's2.step1P': 'En tu curso de Blackboard, ve a <strong>Centro de calificaciones</strong> &rarr; columna de la tarea &rarr; <strong>Assignment File Download</strong>. Selecciona a todos los estudiantes y descarga el ZIP.',
-        's2.step2H': '2. Abre Annotarium y cambia al modo Blackboard',
-        's2.step2P': 'Abre <a href="https://app.annotarium.org">app.annotarium.org</a>, luego activa el modo Blackboard desde la barra de herramientas. Suelta el ZIP en el área de trabajo. Annotarium lee automáticamente la estructura de carpetas por estudiante.',
-        's2.step3H': '3. Configura tu esquema de corrección una vez',
-        's2.step3P': 'Define las puntuaciones por pregunta (p. ej. P1: 10, P2: 15, P3: 5). El esquema se reutiliza en cada envío del ZIP, y cada estudiante tiene su propio total acumulado.',
-        's2.step4H': '4. Construye una biblioteca de comentarios mientras corriges',
-        's2.step4P': 'La primera vez que escribas un comentario reutilizable ("Deriva antes de sustituir", "Revisa la convención de signos"), guárdalo en la biblioteca. Después de dos o tres envíos, la biblioteca cubre la mayoría de lo que necesitas.',
-        's2.step5H': '5. Corrige cada envío',
-        's2.step5P': 'Usa la barra lateral para avanzar entre estudiantes. Usa el lápiz, el resaltador, la herramienta de ecuaciones LaTeX y la biblioteca de comentarios. El esquema mantiene el total por pregunta.',
-        's2.step6H': '6. Exporta los PDF corregidos a una carpeta',
-        's2.step6P': 'Exporta todos los envíos corregidos como carpeta de PDF aplanados. Los nombres de archivo se conservan para poder volver a subirlos por la carga masiva de Blackboard.',
+        's1.h2': 'Escritorio o iPad — Annotarium detecta automáticamente',
+        's1.p': 'Annotarium muestra la opción de importación adecuada según tu dispositivo. No hay ningún "modo" que activar.',
+        's1.desktop.h': 'Escritorio (Chrome, Edge)', 's1.desktop.p': 'Archivo \u2192 <strong>Blackboard folder</strong>. Selecciona la carpeta descomprimida con los envíos.',
+        's1.ipad.h': 'iPad / Móvil', 's1.ipad.p': 'Archivo \u2192 <strong>Blackboard ZIP</strong>. Selecciona el ZIP directamente — sin descomprimir.',
+        's2.h2': 'Flujo paso a paso',
+        's2.step1H': '1. Descarga el ZIP de envíos desde Blackboard', 's2.step1P': 'En tu curso de Blackboard, ve a <strong>Centro de calificaciones</strong> &rarr; columna de la tarea &rarr; <strong>Assignment File Download</strong>. Selecciona a todos los estudiantes y descarga el ZIP.',
+        's2.step2H': '2. En escritorio, descomprime a una carpeta (los usuarios de iPad omiten este paso)', 's2.step2P': 'En escritorio, descomprime el archivo para obtener una carpeta con una subcarpeta por estudiante más los archivos de metadatos de Blackboard. En iPad o móvil, omite este paso — Annotarium abre el ZIP directamente.',
+        's2.step3H': '3. Abre los envíos en Annotarium', 's2.step3P': 'Abre <a href="https://app.annotarium.org">app.annotarium.org</a>, abre el menú <strong>Archivo</strong>, y:',
+        's2.step3LiA': 'En escritorio, elige <strong>Blackboard folder</strong> y selecciona la carpeta descomprimida.',
+        's2.step3LiB': 'En iPad o móvil, elige <strong>Blackboard ZIP</strong> y selecciona el ZIP.',
+        's2.step3Tail': 'La barra lateral se rellena con una entrada por estudiante.',
+        's2.step4H': '4. Haz clic en un estudiante y pulsa Load', 's2.step4P': 'Haz clic en un estudiante de la barra lateral y pulsa <strong>Load</strong> en la barra superior. El PDF de ese estudiante se abre en el área de trabajo.',
+        's2.step5H': '5. Configura el esquema de corrección una vez', 's2.step5P': 'Abre el panel <strong>Scheme</strong> y define los puntos por pregunta y subpartes para esta tarea (p. ej. P1: 10, P2: 15, P3: 5). La estructura se reutiliza en cada estudiante; las notas de cada estudiante se guardan de forma independiente en <code>Marking_progress/[estudiante].ankx.json</code>.',
+        's2.step6H': '6. Construye una biblioteca de comentarios mientras corriges', 's2.step6P': 'La primera vez que escribas un comentario reutilizable ("Deriva antes de sustituir", "Revisa la convención de signos"), guárdalo en la biblioteca. La biblioteca se guarda en tu navegador y se comparte entre todos los estudiantes de la sesión — los comentarios para el estudiante 3 están disponibles para el 73.',
+        's2.step7H': '7. Corrige con LaTeX, lápiz y la biblioteca de comentarios', 's2.step7P': 'Usa el lápiz, el resaltador, la herramienta de ecuaciones LaTeX y la biblioteca. El esquema mantiene el total por pregunta y el total general.',
+        's2.step8H': '8. Pulsa "Marked!" al terminar con un estudiante', 's2.step8P': 'El botón <strong>Marked!</strong> guarda un PDF corregido aplanado y el esquema del estudiante, luego te devuelve a la barra lateral para elegir al siguiente. La barra lateral muestra una marca verde junto a los estudiantes corregidos.',
+        's2.step9H': '9. Pulsa "Finito!" al final', 's2.step9P': 'Cuando todos los estudiantes estén corregidos, el botón <strong>Finito!</strong> aparece en la barra. Exporta un único ZIP con todos los envíos corregidos, listo para volver a subir por la carga masiva de Blackboard.',
         's3.h2': 'Por qué este flujo es más rápido',
-        's3.li1': '<strong>Un esquema, muchos estudiantes</strong> — defínelo una vez, aplicado en todas partes.',
-        's3.li2': '<strong>Una biblioteca, muchos estudiantes</strong> — los comentarios para el estudiante 3 están disponibles para el 73.',
+        's3.li1': '<strong>Un esquema, muchos estudiantes</strong> — se define una vez y se aplica en todos.',
+        's3.li2': '<strong>Una biblioteca, muchos estudiantes</strong> — los comentarios del 3.º sirven para el 73.º.',
         's3.li3': '<strong>Retroalimentación LaTeX</strong> — escribe <code>$\\partial f / \\partial x$</code> en lugar de describirlo.',
-        's3.li4': '<strong>Sin latencia de carga</strong> — todo corre en el navegador, así que la navegación es instantánea.',
-        's3.li5': '<strong>Ningún dato sale de tu equipo</strong> — los envíos quedan locales.',
+        's3.li4': '<strong>Sin latencia de carga</strong> — todo corre en el navegador, la navegación es instantánea.',
+        's3.li5': '<strong>Ningún dato sale de tu dispositivo</strong> — los envíos quedan locales.',
         'faq.h2': 'Preguntas frecuentes',
-        'faq.q1': '¿Annotarium maneja directamente el formato ZIP de Blackboard?', 'faq.a1': 'Sí. Annotarium lee el ZIP que produce "Assignment File Download" de Blackboard, incluyendo la estructura de carpetas por estudiante y los archivos de metadatos.',
-        'faq.q2': '¿Puedo aplicar el mismo comentario a muchos estudiantes?', 'faq.a2': 'Sí. Guarda el comentario en tu biblioteca una vez, luego aplícalo a cualquier envío con un clic. Los comentarios pueden incluir LaTeX, imágenes y texto de retroalimentación estructurada.',
-        'faq.q3': '¿Los PDF de los estudiantes se suben a algún sitio?', 'faq.a3': 'No. El ZIP se procesa totalmente en tu navegador. Ninguna parte del envío se envía a un servidor.',
-        'faq.q4': '¿Puedo volver a subir los PDF corregidos a Blackboard?', 'faq.a4': 'Sí. Exporta los envíos corregidos como carpeta de PDF aplanados. Cada archivo conserva el nombre original para poder devolverlos a los estudiantes mediante la carga estándar de Blackboard.',
-        'rel.h3': 'Relacionado',
-        'rel.acad': 'Annotarium para académicos — visión completa',
-        'rel.latex': 'Cómo anotar un PDF con LaTeX',
+        'faq.q1': '¿Annotarium acepta el ZIP de Blackboard directamente?', 'faq.a1': 'En iPad y móvil, sí — usa Archivo \u2192 Blackboard ZIP y selecciona el ZIP. En escritorio, primero descomprime y usa Archivo \u2192 Blackboard folder, porque la importación en escritorio usa el selector de carpetas del navegador. Annotarium detecta tu dispositivo y muestra la opción correcta.',
+        'faq.q2': '¿Puedo aplicar el mismo comentario a muchos estudiantes?', 'faq.a2': 'Sí. La biblioteca de comentarios se guarda en el navegador y se comparte entre todos los estudiantes de la sesión. Guarda un comentario una vez y aplícalo a cualquier envío con un clic. Los comentarios pueden incluir LaTeX, imágenes y texto estructurado.',
+        'faq.q3': '¿El esquema de corrección se reinicia para cada estudiante?', 'faq.a3': 'La estructura (número de preguntas, subpartes, puntuaciones máximas) se mantiene. Las notas se guardan por estudiante dentro de la carpeta Marking_progress para que cada uno conserve sus totales. Al abrir un estudiante con esquema guardado, Annotarium lo recarga automáticamente.',
+        'faq.q4': '¿Los PDF de los estudiantes se suben a algún sitio?', 'faq.a4': 'No. La carpeta o el ZIP se procesan totalmente en tu navegador. Ninguna parte del envío se envía a un servidor.',
+        'faq.q5': '¿Puedo volver a subir los PDF corregidos a Blackboard?', 'faq.a5': 'Sí. Al pulsar "Finito!" Annotarium exporta un ZIP con los envíos corregidos. Cada archivo conserva el nombre original para poder devolverlos por la carga masiva de Blackboard.',
+        'rel.h3': 'Relacionado', 'rel.acad': 'Annotarium para académicos — visión completa', 'rel.latex': 'Cómo anotar un PDF con LaTeX',
         'ft.home': 'Inicio', 'ft.faq': 'FAQ', 'ft.privacy': 'Privacidad', 'ft.security': 'Seguridad'
       },
       fr: {
         'meta.title': 'Corriger les soumissions Blackboard en lot avec Annotarium',
         'crumb.home': 'Annotarium', 'crumb.this': 'Marquage Blackboard',
         'page.h1': 'Corriger les soumissions Blackboard en lot avec Annotarium',
-        'page.sub': 'Ouvrez le ZIP fourni par Blackboard, corrigez tous les étudiants en une seule session, et exportez un dossier de PDF corrigés prêt à rendre — entièrement dans le navigateur.',
+        'page.sub': 'Téléchargez le ZIP fourni par Blackboard, corrigez tous les étudiants en une seule session, et exportez un ZIP de PDF corrigés prêt à rendre — entièrement dans le navigateur.',
         'cta.open': 'Ouvrir Annotarium',
-        's1.h2': 'Le problème avec la correction intégrée de Blackboard',
-        's1.p1': 'L\u2019annotateur intégré de Blackboard convient aux travaux courts mais devient vite un goulot d\u2019étranglement pour les travaux techniques. Pas de LaTeX pour les retours mathématiques, pas de vraie bibliothèque de commentaires pour réutiliser la même explication d\u2019un étudiant à l\u2019autre, et le chargement par étudiant est lent quand vous avez cent copies à corriger.',
-        's1.p2': 'La solution habituelle est d\u2019utiliser « Assignment File Download » pour récupérer toutes les soumissions en ZIP, les corriger dans un outil bureau, puis les téléverser à nouveau. Annotarium s\u2019insère exactement dans ce flux — mais sans quitter le navigateur.',
-        's2.h2': 'Étape par étape : corriger un ZIP Blackboard en lot',
-        's2.step1H': '1. Téléchargez le ZIP des soumissions depuis Blackboard',
-        's2.step1P': 'Dans votre cours Blackboard, allez dans <strong>Centre de notes</strong> &rarr; colonne du devoir &rarr; <strong>Assignment File Download</strong>. Sélectionnez tous les étudiants et téléchargez le ZIP.',
-        's2.step2H': '2. Ouvrez Annotarium et passez en mode Blackboard',
-        's2.step2P': 'Ouvrez <a href="https://app.annotarium.org">app.annotarium.org</a>, puis activez le mode Blackboard depuis la barre d\u2019outils. Déposez le ZIP dans l\u2019espace de travail. Annotarium lit automatiquement la structure de dossiers par étudiant.',
-        's2.step3H': '3. Configurez votre grille une seule fois',
-        's2.step3P': 'Définissez les barèmes par question (ex. Q1 : 10, Q2 : 15, Q3 : 5). La grille est réutilisée pour chaque soumission du ZIP, et chaque étudiant a son propre total.',
-        's2.step4H': '4. Constituez une bibliothèque de commentaires au fil de la correction',
-        's2.step4P': 'La première fois que vous écrivez un commentaire réutilisable (« Dérivez avant de substituer », « Vérifiez la convention de signe »), enregistrez-le dans la bibliothèque. Après deux ou trois copies, la bibliothèque couvre l\u2019essentiel.',
-        's2.step5H': '5. Corrigez chaque soumission',
-        's2.step5P': 'Utilisez la barre latérale pour passer d\u2019un étudiant à l\u2019autre. Utilisez le stylo, le surligneur, l\u2019outil LaTeX et la bibliothèque de commentaires. La grille suit le total par question.',
-        's2.step6H': '6. Exportez les PDF corrigés dans un dossier',
-        's2.step6P': 'Exportez toutes les soumissions corrigées comme dossier de PDF aplatis. Les noms de fichiers sont conservés pour pouvoir les téléverser à nouveau via le téléversement en lot de Blackboard.',
+        's1.h2': 'Bureau ou iPad — Annotarium détecte automatiquement',
+        's1.p': 'Annotarium affiche la bonne option d\u2019import selon votre appareil. Il n\u2019y a aucun « mode » à activer.',
+        's1.desktop.h': 'Bureau (Chrome, Edge)', 's1.desktop.p': 'Fichier \u2192 <strong>Blackboard folder</strong>. Sélectionnez le dossier dézippé de soumissions.',
+        's1.ipad.h': 'iPad / Mobile', 's1.ipad.p': 'Fichier \u2192 <strong>Blackboard ZIP</strong>. Sélectionnez le ZIP directement — pas besoin de décompresser.',
+        's2.h2': 'Flux pas à pas',
+        's2.step1H': '1. Téléchargez le ZIP depuis Blackboard', 's2.step1P': 'Dans votre cours Blackboard, allez dans <strong>Centre de notes</strong> &rarr; colonne du devoir &rarr; <strong>Assignment File Download</strong>. Sélectionnez tous les étudiants et téléchargez le ZIP.',
+        's2.step2H': '2. Sur bureau, décompressez vers un dossier (ignorer sur iPad)', 's2.step2P': 'Sur bureau, décompressez le fichier pour obtenir un dossier contenant un sous-dossier par étudiant et les fichiers de métadonnées Blackboard. Sur iPad ou mobile, ignorez cette étape — Annotarium ouvre le ZIP directement.',
+        's2.step3H': '3. Ouvrez les soumissions dans Annotarium', 's2.step3P': 'Ouvrez <a href="https://app.annotarium.org">app.annotarium.org</a>, ouvrez le menu <strong>Fichier</strong>, puis :',
+        's2.step3LiA': 'Sur bureau, choisissez <strong>Blackboard folder</strong> et sélectionnez le dossier dézippé.',
+        's2.step3LiB': 'Sur iPad ou mobile, choisissez <strong>Blackboard ZIP</strong> et sélectionnez le ZIP.',
+        's2.step3Tail': 'La barre latérale se remplit avec une entrée par étudiant.',
+        's2.step4H': '4. Cliquez sur un étudiant et appuyez sur Load', 's2.step4P': 'Cliquez sur un étudiant dans la barre latérale, puis appuyez sur <strong>Load</strong> dans la barre d\u2019outils. Le PDF de cet étudiant s\u2019ouvre dans l\u2019espace de travail.',
+        's2.step5H': '5. Configurez la grille une seule fois', 's2.step5P': 'Ouvrez le panneau <strong>Scheme</strong> et définissez les barèmes par question et sous-parties pour ce devoir (ex. Q1 : 10, Q2 : 15, Q3 : 5). La structure est réutilisée pour chaque étudiant ; les notes de chaque étudiant sont enregistrées séparément dans <code>Marking_progress/[étudiant].ankx.json</code>.',
+        's2.step6H': '6. Constituez une bibliothèque de commentaires', 's2.step6P': 'La première fois que vous écrivez un commentaire réutilisable (« Dérivez avant de substituer », « Vérifiez la convention de signe »), enregistrez-le dans la bibliothèque. Elle est stockée dans votre navigateur et partagée entre tous les étudiants de la session — les commentaires pour l\u2019étudiant 3 sont disponibles pour le 73.',
+        's2.step7H': '7. Corrigez avec LaTeX, stylo et bibliothèque', 's2.step7P': 'Utilisez le stylo, le surligneur, l\u2019outil LaTeX et la bibliothèque. La grille suit le total par question et le total global.',
+        's2.step8H': '8. Appuyez sur « Marked! » à la fin d\u2019un étudiant', 's2.step8P': 'Le bouton <strong>Marked!</strong> enregistre un PDF corrigé aplati et la grille de l\u2019étudiant, puis retourne à la barre latérale pour choisir le suivant. Une coche verte apparaît à côté des étudiants corrigés.',
+        's2.step9H': '9. Appuyez sur « Finito! » à la fin', 's2.step9P': 'Quand tous les étudiants sont corrigés, le bouton <strong>Finito!</strong> apparaît. Il exporte un seul ZIP contenant toutes les soumissions corrigées, prêt pour le téléversement en lot de Blackboard.',
         's3.h2': 'Pourquoi ce flux est plus rapide',
         's3.li1': '<strong>Une grille, plusieurs étudiants</strong> — définie une fois, appliquée partout.',
-        's3.li2': '<strong>Une bibliothèque, plusieurs étudiants</strong> — les commentaires pour l\u2019étudiant 3 sont disponibles pour le 73.',
-        's3.li3': '<strong>Retours LaTeX</strong> — saisissez <code>$\\partial f / \\partial x$</code> au lieu de le décrire.',
-        's3.li4': '<strong>Aucune latence d\u2019upload</strong> — tout tourne dans le navigateur, donc la navigation est instantanée.',
-        's3.li5': '<strong>Aucune donnée ne quitte votre ordinateur</strong> — les soumissions restent locales.',
+        's3.li2': '<strong>Une bibliothèque, plusieurs étudiants</strong> — les commentaires du 3e servent au 73e.',
+        's3.li3': '<strong>Retours LaTeX</strong> — saisissez <code>$\\partial f / \\partial x$</code> au lieu de décrire.',
+        's3.li4': '<strong>Aucune latence</strong> — tout tourne dans le navigateur.',
+        's3.li5': '<strong>Aucune donnée ne quitte votre appareil</strong> — les soumissions restent locales.',
         'faq.h2': 'FAQ',
-        'faq.q1': 'Annotarium gère-t-il directement le format ZIP de Blackboard ?', 'faq.a1': 'Oui. Annotarium lit le ZIP produit par « Assignment File Download » de Blackboard, y compris la structure de dossiers par étudiant et les fichiers de métadonnées.',
-        'faq.q2': 'Puis-je appliquer le même commentaire à de nombreux étudiants ?', 'faq.a2': 'Oui. Enregistrez le commentaire dans votre bibliothèque une fois, puis appliquez-le à n\u2019importe quelle soumission en un clic. Les commentaires peuvent inclure du LaTeX, des images et du texte de retour structuré.',
-        'faq.q3': 'Les PDF des étudiants sont-ils téléversés quelque part ?', 'faq.a3': 'Non. Le ZIP est traité entièrement dans votre navigateur. Aucune partie de la soumission n\u2019est envoyée à un serveur.',
-        'faq.q4': 'Puis-je re-téléverser les PDF corrigés vers Blackboard ?', 'faq.a4': 'Oui. Exportez les soumissions corrigées comme dossier de PDF aplatis. Chaque fichier garde son nom d\u2019origine pour pouvoir être rendu via le téléversement standard de Blackboard.',
-        'rel.h3': 'À voir aussi',
-        'rel.acad': 'Annotarium pour les universitaires — vue d\u2019ensemble',
-        'rel.latex': 'Comment annoter un PDF avec LaTeX',
+        'faq.q1': 'Annotarium accepte-t-il le ZIP Blackboard directement ?', 'faq.a1': 'Sur iPad et mobile, oui — utilisez Fichier \u2192 Blackboard ZIP. Sur bureau, décompressez d\u2019abord et utilisez Fichier \u2192 Blackboard folder, car l\u2019import bureau utilise le sélecteur de dossier du navigateur. Annotarium détecte votre appareil et affiche la bonne option.',
+        'faq.q2': 'Puis-je appliquer le même commentaire à plusieurs étudiants ?', 'faq.a2': 'Oui. La bibliothèque de commentaires est stockée dans votre navigateur et partagée entre tous les étudiants de la session. Enregistrez un commentaire une fois et appliquez-le en un clic. Les commentaires peuvent inclure du LaTeX, des images et du texte structuré.',
+        'faq.q3': 'La grille se réinitialise-t-elle pour chaque étudiant ?', 'faq.a3': 'La structure (nombre de questions, sous-parties, barèmes max) persiste. Les notes sont enregistrées par étudiant dans le dossier Marking_progress. Quand vous ouvrez un étudiant qui a déjà une grille sauvegardée, Annotarium la recharge automatiquement.',
+        'faq.q4': 'Les PDF des étudiants sont-ils téléversés ?', 'faq.a4': 'Non. Le dossier ou le ZIP est traité entièrement dans votre navigateur. Aucune partie de la soumission n\u2019est envoyée à un serveur.',
+        'faq.q5': 'Puis-je re-téléverser les PDF corrigés vers Blackboard ?', 'faq.a5': 'Oui. Appuyez sur « Finito! » et Annotarium exporte un ZIP des soumissions corrigées. Chaque fichier garde son nom d\u2019origine pour le téléversement standard de Blackboard.',
+        'rel.h3': 'À voir aussi', 'rel.acad': 'Annotarium pour les universitaires — vue d\u2019ensemble', 'rel.latex': 'Comment annoter un PDF avec LaTeX',
         'ft.home': 'Accueil', 'ft.faq': 'FAQ', 'ft.privacy': 'Confidentialité', 'ft.security': 'Sécurité'
       },
       zh: {
         'meta.title': '\u4f7f\u7528 Annotarium \u6279\u91cf\u6279\u9605 Blackboard \u4f5c\u4e1a',
         'crumb.home': 'Annotarium', 'crumb.this': 'Blackboard \u6279\u9605',
         'page.h1': '\u4f7f\u7528 Annotarium \u6279\u91cf\u6279\u9605 Blackboard \u4f5c\u4e1a',
-        'page.sub': '\u6253\u5f00 Blackboard \u4ea4\u4ed8\u7684 ZIP\uff0c\u4e00\u6b21\u4f1a\u8bdd\u5185\u6279\u9605\u6240\u6709\u5b66\u751f\uff0c\u5e76\u5bfc\u51fa\u4e00\u4e2a\u53ef\u76f4\u63a5\u8fd4\u8fd8\u7684\u5df2\u6279\u9605 PDF \u6587\u4ef6\u5939\u2014\u2014\u5168\u90e8\u5728\u6d4f\u89c8\u5668\u5185\u3002',
+        'page.sub': '\u4e0b\u8f7d Blackboard \u63d0\u4f9b\u7684 ZIP\uff0c\u4e00\u6b21\u4f1a\u8bdd\u5185\u6279\u9605\u6240\u6709\u5b66\u751f\uff0c\u5e76\u5bfc\u51fa\u4e00\u4e2a\u53ef\u76f4\u63a5\u8fd4\u8fd8\u7684\u5df2\u6279\u9605 PDF ZIP\u2014\u2014\u5168\u90e8\u5728\u6d4f\u89c8\u5668\u5185\u5b8c\u6210\u3002',
         'cta.open': '\u6253\u5f00 Annotarium',
-        's1.h2': 'Blackboard \u5185\u7f6e\u6279\u9605\u7684\u95ee\u9898',
-        's1.p1': 'Blackboard \u5185\u7f6e\u6279\u6ce8\u5668\u9002\u5408\u77ed\u4f5c\u4e1a\uff0c\u4f46\u5728\u6280\u672f\u6027\u4f5c\u4e1a\u4e0a\u8fc5\u901f\u6210\u4e3a\u74f6\u9888\u3002\u4e0d\u652f\u6301 LaTeX \u6570\u5b66\u53cd\u9988\uff0c\u6ca1\u6709\u771f\u6b63\u7684\u8bc4\u8bba\u5e93\u53ef\u8de8\u5b66\u751f\u590d\u7528\u540c\u6837\u7684\u8bf4\u660e\uff0c\u6709\u4e00\u767e\u4efd\u4f5c\u4e1a\u8981\u5904\u7406\u65f6\u6bcf\u4e2a\u5b66\u751f\u7684\u52a0\u8f7d\u4e5f\u5f88\u6162\u3002',
-        's1.p2': '\u901a\u7528\u7684\u53d8\u901a\u65b9\u6cd5\u662f\u4f7f\u7528 \u201cAssignment File Download\u201d \u4ee5 ZIP \u4e0b\u8f7d\u6240\u6709\u63d0\u4ea4\uff0c\u5728\u684c\u9762\u5de5\u5177\u4e2d\u6279\u9605\u540e\u518d\u4e0a\u4f20\u3002Annotarium \u6b63\u662f\u4e3a\u8fd9\u4e2a\u6d41\u7a0b\u8bbe\u8ba1\u7684\u2014\u2014\u4f46\u4e0d\u9700\u8981\u79bb\u5f00\u6d4f\u89c8\u5668\u3002',
-        's2.h2': '\u9010\u6b65\u6307\u5357\uff1a\u6279\u91cf\u6279\u9605 Blackboard ZIP',
-        's2.step1H': '1. \u4ece Blackboard \u4e0b\u8f7d\u63d0\u4ea4\u7684 ZIP',
-        's2.step1P': '\u5728 Blackboard \u8bfe\u7a0b\u4e2d\u8fdb\u5165 <strong>\u6210\u7ee9\u4e2d\u5fc3</strong> &rarr; \u4f5c\u4e1a\u5217 &rarr; <strong>Assignment File Download</strong>\u3002\u9009\u4e2d\u6240\u6709\u5b66\u751f\u5e76\u4e0b\u8f7d ZIP\u3002',
-        's2.step2H': '2. \u6253\u5f00 Annotarium \u5e76\u5207\u6362\u5230 Blackboard \u6a21\u5f0f',
-        's2.step2P': '\u6253\u5f00 <a href="https://app.annotarium.org">app.annotarium.org</a>\uff0c\u7136\u540e\u4ece\u5de5\u5177\u680f\u5207\u6362\u5230 Blackboard \u6a21\u5f0f\u3002\u5c06 ZIP \u62d6\u62fd\u5230\u5de5\u4f5c\u533a\u3002Annotarium \u4f1a\u81ea\u52a8\u8bfb\u53d6\u6bcf\u4f4d\u5b66\u751f\u7684\u6587\u4ef6\u5939\u7ed3\u6784\u3002',
-        's2.step3H': '3. \u4e00\u6b21\u8bbe\u5b9a\u8bc4\u5206\u91cf\u8868',
-        's2.step3P': '\u8bbe\u5b9a\u4f5c\u4e1a\u7684\u5404\u9898\u5206\u503c\uff08\u5982 Q1\uff1a10\u3001Q2\uff1a15\u3001Q3\uff1a5\uff09\u3002\u8be5\u91cf\u8868\u4f1a\u5e94\u7528\u4e8e ZIP \u4e2d\u7684\u6bcf\u4efd\u63d0\u4ea4\uff0c\u6bcf\u4f4d\u5b66\u751f\u90fd\u6709\u81ea\u5df1\u7684\u7d2f\u8ba1\u603b\u5206\u3002',
-        's2.step4H': '4. \u6279\u9605\u8fc7\u7a0b\u4e2d\u9010\u6b65\u6784\u5efa\u8bc4\u8bba\u5e93',
-        's2.step4P': '\u9996\u6b21\u5199\u4e0b\u53ef\u590d\u7528\u7684\u8bc4\u8bba\uff08\u201c\u5148\u6c42\u5bfc\u518d\u4ee3\u5165\u201d\u3001\u201c\u68c0\u67e5\u7b26\u53f7\u7ea6\u5b9a\u201d\uff09\u65f6\u4fdd\u5b58\u5230\u5e93\u4e2d\u3002\u4e24\u4e09\u4efd\u4f5c\u4e1a\u540e\uff0c\u5e93\u5df2\u6db5\u76d6\u5927\u591a\u6570\u5e38\u7528\u8bc4\u8bba\u3002',
-        's2.step5H': '5. \u6279\u9605\u6bcf\u4efd\u63d0\u4ea4',
-        's2.step5P': '\u4f7f\u7528\u4fa7\u8fb9\u680f\u5728\u5b66\u751f\u4e4b\u95f4\u5207\u6362\u3002\u4f7f\u7528\u7b14\u3001\u8377\u5149\u7b14\u3001LaTeX \u516c\u5f0f\u5de5\u5177\u4e0e\u8bc4\u8bba\u5e93\u3002\u8bc4\u5206\u91cf\u8868\u4f1a\u8ddf\u8e2a\u6bcf\u9898\u7684\u7d2f\u8ba1\u5206\u3002',
-        's2.step6H': '6. \u5c06\u6279\u9605\u540e\u7684 PDF \u5bfc\u51fa\u5230\u6587\u4ef6\u5939',
-        's2.step6P': '\u5c06\u6240\u6709\u6279\u9605\u540e\u7684\u63d0\u4ea4\u5bfc\u51fa\u4e3a\u626b\u5e73\u540e\u7684 PDF \u6587\u4ef6\u5939\u3002\u4fdd\u7559\u539f\u59cb\u6587\u4ef6\u540d\uff0c\u4ee5\u4fbf\u901a\u8fc7 Blackboard \u7684\u6279\u91cf\u4e0a\u4f20\u8fd4\u8fd8\u7ed9\u5b66\u751f\u3002',
+        's1.h2': '\u684c\u9762\u6216 iPad\u2014\u2014Annotarium \u81ea\u52a8\u8bc6\u522b',
+        's1.p': 'Annotarium \u6839\u636e\u8bbe\u5907\u663e\u793a\u76f8\u5e94\u7684\u5bfc\u5165\u9009\u9879\u3002\u6ca1\u6709\u9700\u8981\u5207\u6362\u7684\u201c\u6a21\u5f0f\u201d\u3002',
+        's1.desktop.h': '\u684c\u9762 (Chrome / Edge)', 's1.desktop.p': '\u6587\u4ef6 \u2192 <strong>Blackboard folder</strong>\u3002\u9009\u62e9\u89e3\u538b\u540e\u7684\u63d0\u4ea4\u6587\u4ef6\u5939\u3002',
+        's1.ipad.h': 'iPad / \u79fb\u52a8\u7aef', 's1.ipad.p': '\u6587\u4ef6 \u2192 <strong>Blackboard ZIP</strong>\u3002\u76f4\u63a5\u9009\u62e9 ZIP\u2014\u2014\u65e0\u9700\u89e3\u538b\u3002',
+        's2.h2': '\u9010\u6b65\u6d41\u7a0b',
+        's2.step1H': '1. \u4ece Blackboard \u4e0b\u8f7d\u63d0\u4ea4 ZIP', 's2.step1P': '\u5728 Blackboard \u8bfe\u7a0b\u4e2d\u8fdb\u5165 <strong>\u6210\u7ee9\u4e2d\u5fc3</strong> &rarr; \u4f5c\u4e1a\u5217 &rarr; <strong>Assignment File Download</strong>\u3002\u9009\u4e2d\u6240\u6709\u5b66\u751f\u5e76\u4e0b\u8f7d ZIP\u3002',
+        's2.step2H': '2. \u684c\u9762\u7528\u6237\u89e3\u538b\u5230\u6587\u4ef6\u5939\uff08iPad \u7528\u6237\u8df3\u8fc7\uff09', 's2.step2P': '\u5728\u684c\u9762\u7aef\uff0c\u5148\u89e3\u538b\u6587\u4ef6\uff0c\u5f97\u5230\u4e00\u4e2a\u5305\u542b\u6bcf\u4f4d\u5b66\u751f\u5b50\u6587\u4ef6\u5939\u548c Blackboard \u5143\u6570\u636e\u6587\u4ef6\u7684\u6587\u4ef6\u5939\u3002iPad \u6216\u79fb\u52a8\u8bbe\u5907\u8df3\u8fc7\u6b64\u6b65\u2014\u2014Annotarium \u76f4\u63a5\u6253\u5f00 ZIP\u3002',
+        's2.step3H': '3. \u5728 Annotarium \u4e2d\u6253\u5f00\u63d0\u4ea4\u5185\u5bb9', 's2.step3P': '\u6253\u5f00 <a href="https://app.annotarium.org">app.annotarium.org</a>\uff0c\u6253\u5f00 <strong>\u6587\u4ef6</strong> \u83dc\u5355\uff0c\u7136\u540e\uff1a',
+        's2.step3LiA': '\u684c\u9762\uff1a\u9009\u62e9 <strong>Blackboard folder</strong>\uff0c\u9009\u62e9\u89e3\u538b\u540e\u7684\u6587\u4ef6\u5939\u3002',
+        's2.step3LiB': 'iPad / \u79fb\u52a8\u7aef\uff1a\u9009\u62e9 <strong>Blackboard ZIP</strong>\uff0c\u9009\u62e9 ZIP \u6587\u4ef6\u3002',
+        's2.step3Tail': '\u4fa7\u8fb9\u680f\u4f1a\u4e3a\u6bcf\u4f4d\u5b66\u751f\u663e\u793a\u4e00\u9879\u3002',
+        's2.step4H': '4. \u5355\u51fb\u4e00\u4f4d\u5b66\u751f\u5e76\u6309 Load', 's2.step4P': '\u5728\u4fa7\u8fb9\u680f\u5355\u51fb\u4e00\u4f4d\u5b66\u751f\uff0c\u7136\u540e\u6309\u9876\u90e8\u5de5\u5177\u680f\u4e0a\u7684 <strong>Load</strong>\u3002\u8be5\u5b66\u751f\u7684 PDF \u5c06\u5728\u4e3b\u5de5\u4f5c\u533a\u6253\u5f00\u3002',
+        's2.step5H': '5. \u4e00\u6b21\u8bbe\u5b9a\u8bc4\u5206\u91cf\u8868', 's2.step5P': '\u6253\u5f00 <strong>Scheme</strong> \u9762\u677f\uff0c\u5b9a\u4e49\u8be5\u4f5c\u4e1a\u6bcf\u9898\u548c\u5206\u9898\u7684\u5206\u503c\uff08\u5982 Q1\uff1a10\u3001Q2\uff1a15\u3001Q3\uff1a5\uff09\u3002\u91cf\u8868\u7ed3\u6784\u4f1a\u5e94\u7528\u4e8e\u6bcf\u4f4d\u5b66\u751f\uff0c\u6bcf\u4f4d\u5b66\u751f\u7684\u5206\u6570\u72ec\u7acb\u4fdd\u5b58\u5230 <code>Marking_progress/[\u5b66\u751f].ankx.json</code>\u3002',
+        's2.step6H': '6. \u6279\u9605\u8fc7\u7a0b\u4e2d\u9010\u6b65\u6784\u5efa\u8bc4\u8bba\u5e93', 's2.step6P': '\u9996\u6b21\u5199\u4e0b\u53ef\u590d\u7528\u7684\u8bc4\u8bba\u65f6\uff0c\u4fdd\u5b58\u5230\u8bc4\u8bba\u5e93\u3002\u8bc4\u8bba\u5e93\u5b58\u50a8\u5728\u4f60\u7684\u6d4f\u89c8\u5668\u4e2d\uff0c\u5e76\u5728\u672c\u6b21\u4f1a\u8bdd\u7684\u6240\u6709\u5b66\u751f\u4e4b\u95f4\u5171\u4eab\u2014\u2014\u4e3a\u5b66\u751f 3 \u5199\u7684\u8bc4\u8bba\u5bf9\u5b66\u751f 73 \u4e5f\u53ef\u7528\u3002',
+        's2.step7H': '7. \u4f7f\u7528 LaTeX\u3001\u7b14\u4e0e\u8bc4\u8bba\u5e93\u6279\u9605', 's2.step7P': '\u4f7f\u7528\u7b14\u3001\u8377\u5149\u7b14\u3001LaTeX \u516c\u5f0f\u5de5\u5177\u4e0e\u8bc4\u8bba\u5e93\u3002\u8bc4\u5206\u91cf\u8868\u4f1a\u8ddf\u8e2a\u6bcf\u9898\u7684\u7d2f\u8ba1\u5206\u4e0e\u603b\u5206\u3002',
+        's2.step8H': '8. \u5b8c\u6210\u4e00\u540d\u5b66\u751f\u540e\u6309 "Marked!"', 's2.step8P': '<strong>Marked!</strong> \u6309\u94ae\u5c06\u4fdd\u5b58\u626b\u5e73\u540e\u7684\u5df2\u6279\u9605 PDF \u4e0e\u8be5\u5b66\u751f\u7684\u91cf\u8868\uff0c\u5e76\u8fd4\u56de\u4fa7\u8fb9\u680f\u4ee5\u4f9b\u9009\u62e9\u4e0b\u4e00\u4eba\u3002\u5df2\u6279\u9605\u7684\u5b66\u751f\u4f1a\u5728\u4fa7\u8fb9\u680f\u4e2d\u663e\u793a\u7ef9\u8272\u5bf9\u52fe\u3002',
+        's2.step9H': '9. \u5168\u90e8\u5b8c\u6210\u540e\u6309 "Finito!"', 's2.step9P': '\u5f53\u6240\u6709\u5b66\u751f\u5747\u5df2\u6279\u9605\u65f6\uff0c\u5de5\u5177\u680f\u4f1a\u51fa\u73b0 <strong>Finito!</strong> \u6309\u94ae\u3002\u5b83\u4f1a\u5c06\u6240\u6709\u5df2\u6279\u9605\u63d0\u4ea4\u5bfc\u51fa\u4e3a\u4e00\u4e2a ZIP\uff0c\u53ef\u76f4\u63a5\u901a\u8fc7 Blackboard \u6279\u91cf\u4e0a\u4f20\u8fd4\u8fd8\u3002',
         's3.h2': '\u4e3a\u4ec0\u4e48\u8fd9\u4e2a\u6d41\u7a0b\u66f4\u5feb',
         's3.li1': '<strong>\u4e00\u4e2a\u8bc4\u5206\u91cf\u8868\u670d\u52a1\u6240\u6709\u5b66\u751f</strong>\u2014\u2014\u5b9a\u4e49\u4e00\u6b21\uff0c\u5904\u5904\u4f7f\u7528\u3002',
-        's3.li2': '<strong>\u4e00\u4e2a\u8bc4\u8bba\u5e93\u670d\u52a1\u6240\u6709\u5b66\u751f</strong>\u2014\u2014\u4e3a\u5b66\u751f 3 \u5199\u7684\u8bc4\u8bba\u53ef\u7528\u4e8e\u5b66\u751f 73\u3002',
+        's3.li2': '<strong>\u4e00\u4e2a\u8bc4\u8bba\u5e93\u670d\u52a1\u6240\u6709\u5b66\u751f</strong>\u2014\u2014\u4e3a\u7b2c 3 \u540d\u5199\u7684\u8bc4\u8bba\u5bf9\u7b2c 73 \u540d\u4e5f\u53ef\u7528\u3002',
         's3.li3': '<strong>LaTeX \u53cd\u9988</strong>\u2014\u2014\u8f93\u5165 <code>$\\partial f / \\partial x$</code> \u800c\u4e0d\u662f\u6587\u5b57\u63cf\u8ff0\u3002',
         's3.li4': '<strong>\u65e0\u4e0a\u4f20\u5ef6\u8fdf</strong>\u2014\u2014\u4e00\u5207\u5728\u6d4f\u89c8\u5668\u5185\u8fd0\u884c\uff0c\u5bfc\u822a\u5373\u65f6\u3002',
-        's3.li5': '<strong>\u6570\u636e\u4e0d\u79bb\u5f00\u4f60\u7684\u7535\u8111</strong>\u2014\u2014\u63d0\u4ea4\u59cb\u7ec8\u672c\u5730\u3002',
+        's3.li5': '<strong>\u6570\u636e\u4e0d\u79bb\u5f00\u4f60\u7684\u8bbe\u5907</strong>\u2014\u2014\u63d0\u4ea4\u59cb\u7ec8\u672c\u5730\u3002',
         'faq.h2': '\u5e38\u89c1\u95ee\u9898',
-        'faq.q1': 'Annotarium \u80fd\u76f4\u63a5\u5904\u7406 Blackboard \u7684 ZIP \u683c\u5f0f\u5417\uff1f', 'faq.a1': '\u80fd\u3002Annotarium \u53ef\u8bfb\u53d6 Blackboard \u201cAssignment File Download\u201d \u751f\u6210\u7684 ZIP\uff0c\u5305\u542b\u6bcf\u4f4d\u5b66\u751f\u7684\u6587\u4ef6\u5939\u7ed3\u6784\u4e0e\u5143\u6570\u636e\u6587\u4ef6\u3002',
-        'faq.q2': '\u80fd\u5bf9\u591a\u4f4d\u5b66\u751f\u5e94\u7528\u540c\u4e00\u6761\u8bc4\u8bba\u5417\uff1f', 'faq.a2': '\u80fd\u3002\u5c06\u8bc4\u8bba\u4fdd\u5b58\u5230\u5e93\u4e00\u6b21\uff0c\u5373\u53ef\u4e00\u952e\u5e94\u7528\u4e8e\u4efb\u4f55\u63d0\u4ea4\u3002\u8bc4\u8bba\u53ef\u5305\u542b LaTeX\u3001\u56fe\u50cf\u53ca\u7ed3\u6784\u5316\u53cd\u9988\u6587\u672c\u3002',
-        'faq.q3': '\u5b66\u751f\u7684 PDF \u4f1a\u88ab\u4e0a\u4f20\u5230\u4efb\u4f55\u5730\u65b9\u5417\uff1f', 'faq.a3': '\u4e0d\u4f1a\u3002ZIP \u5b8c\u5168\u5728\u4f60\u7684\u6d4f\u89c8\u5668\u5185\u5904\u7406\uff0c\u63d0\u4ea4\u4e2d\u7684\u4efb\u4f55\u5185\u5bb9\u90fd\u4e0d\u4f1a\u53d1\u9001\u5230\u670d\u52a1\u5668\u3002',
-        'faq.q4': '\u53ef\u4ee5\u5c06\u6279\u9605\u540e\u7684 PDF \u91cd\u65b0\u4e0a\u4f20\u5230 Blackboard \u5417\uff1f', 'faq.a4': '\u53ef\u4ee5\u3002\u5c06\u6279\u9605\u540e\u7684\u63d0\u4ea4\u5bfc\u51fa\u4e3a\u626b\u5e73\u540e\u7684 PDF \u6587\u4ef6\u5939\u3002\u6bcf\u4e2a\u6587\u4ef6\u4fdd\u7559\u539f\u59cb\u6587\u4ef6\u540d\uff0c\u53ef\u901a\u8fc7 Blackboard \u7684\u6807\u51c6\u4e0a\u4f20\u8fd4\u8fd8\u7ed9\u5b66\u751f\u3002',
-        'rel.h3': '\u76f8\u5173\u9875\u9762',
-        'rel.acad': '\u9762\u5411\u5b66\u8005\u7684 Annotarium\u2014\u2014\u5168\u9762\u4ecb\u7ecd',
-        'rel.latex': '\u5982\u4f55\u7528 LaTeX \u6279\u6ce8 PDF',
+        'faq.q1': 'Annotarium \u80fd\u76f4\u63a5\u63a5\u53d7 Blackboard \u7684 ZIP \u5417\uff1f', 'faq.a1': '\u5728 iPad \u4e0e\u79fb\u52a8\u7aef\uff0c\u53ef\u4ee5\u2014\u2014\u4f7f\u7528\u6587\u4ef6 \u2192 Blackboard ZIP\u3002\u5728\u684c\u9762\u7aef\uff0c\u8bf7\u5148\u89e3\u538b\uff0c\u7136\u540e\u4f7f\u7528\u6587\u4ef6 \u2192 Blackboard folder\uff0c\u56e0\u4e3a\u684c\u9762\u5bfc\u5165\u4f7f\u7528\u6d4f\u89c8\u5668\u7684\u6587\u4ef6\u5939\u9009\u62e9\u5668\u3002Annotarium \u4f1a\u81ea\u52a8\u68c0\u6d4b\u4f60\u7684\u8bbe\u5907\u5e76\u663e\u793a\u6b63\u786e\u7684\u9009\u9879\u3002',
+        'faq.q2': '\u80fd\u5bf9\u591a\u4f4d\u5b66\u751f\u5e94\u7528\u540c\u4e00\u6761\u8bc4\u8bba\u5417\uff1f', 'faq.a2': '\u80fd\u3002\u8bc4\u8bba\u5e93\u5b58\u50a8\u5728\u6d4f\u89c8\u5668\u4e2d\uff0c\u5e76\u5728\u672c\u6b21\u4f1a\u8bdd\u7684\u6240\u6709\u5b66\u751f\u4e4b\u95f4\u5171\u4eab\u3002\u4fdd\u5b58\u4e00\u6b21\u540e\u5373\u53ef\u4e00\u952e\u5e94\u7528\u4e8e\u4efb\u4f55\u63d0\u4ea4\u3002\u8bc4\u8bba\u53ef\u5305\u542b LaTeX\u3001\u56fe\u50cf\u548c\u7ed3\u6784\u5316\u53cd\u9988\u6587\u672c\u3002',
+        'faq.q3': '\u8bc4\u5206\u91cf\u8868\u4f1a\u4e3a\u6bcf\u4f4d\u5b66\u751f\u91cd\u7f6e\u5417\uff1f', 'faq.a3': '\u7ed3\u6784\uff08\u9898\u6570\u3001\u5206\u9898\u3001\u6ee1\u5206\uff09\u4f1a\u4fdd\u7559\u3002\u5206\u6570\u672c\u8eab\u4f1a\u6309\u5b66\u751f\u4fdd\u5b58\u5728 Marking_progress \u6587\u4ef6\u5939\u5185\uff0c\u6bcf\u4f4d\u5b66\u751f\u7559\u6709\u81ea\u5df1\u7684\u603b\u5206\u3002\u6253\u5f00\u5df2\u6709\u91cf\u8868\u7684\u5b66\u751f\u65f6\uff0cAnnotarium \u4f1a\u81ea\u52a8\u91cd\u65b0\u52a0\u8f7d\u3002',
+        'faq.q4': '\u5b66\u751f\u7684 PDF \u4f1a\u88ab\u4e0a\u4f20\u5230\u4efb\u4f55\u5730\u65b9\u5417\uff1f', 'faq.a4': '\u4e0d\u4f1a\u3002\u6587\u4ef6\u5939\u6216 ZIP \u5b8c\u5168\u5728\u4f60\u7684\u6d4f\u89c8\u5668\u5185\u5904\u7406\uff0c\u63d0\u4ea4\u4e2d\u7684\u4efb\u4f55\u5185\u5bb9\u90fd\u4e0d\u4f1a\u53d1\u9001\u5230\u670d\u52a1\u5668\u3002',
+        'faq.q5': '\u53ef\u4ee5\u5c06\u6279\u9605\u540e\u7684 PDF \u91cd\u65b0\u4e0a\u4f20\u5230 Blackboard \u5417\uff1f', 'faq.a5': '\u53ef\u4ee5\u3002\u6309 "Finito!" \u540e Annotarium \u4f1a\u5c06\u6279\u9605\u6e08\u7684\u63d0\u4ea4\u5bfc\u51fa\u4e3a ZIP\u3002\u6bcf\u4e2a\u6587\u4ef6\u4fdd\u7559\u539f\u59cb\u6587\u4ef6\u540d\uff0c\u53ef\u901a\u8fc7 Blackboard \u7684\u6279\u91cf\u4e0a\u4f20\u8fd4\u8fd8\u7ed9\u5b66\u751f\u3002',
+        'rel.h3': '\u76f8\u5173\u9875\u9762', 'rel.acad': '\u9762\u5411\u5b66\u8005\u7684 Annotarium\u2014\u2014\u5168\u9762\u4ecb\u7ecd', 'rel.latex': '\u5982\u4f55\u7528 LaTeX \u6279\u6ce8 PDF',
         'ft.home': '\u9996\u9875', 'ft.faq': '\u5e38\u89c1\u95ee\u9898', 'ft.privacy': '\u9690\u79c1', 'ft.security': '\u5b89\u5168'
       },
       ja: {
         'meta.title': 'Annotarium \u3067 Blackboard \u306e\u63d0\u51fa\u3092\u4e00\u62ec\u63a1\u70b9',
         'crumb.home': 'Annotarium', 'crumb.this': 'Blackboard \u63a1\u70b9',
         'page.h1': 'Annotarium \u3067 Blackboard \u306e\u63d0\u51fa\u3092\u4e00\u62ec\u63a1\u70b9',
-        'page.sub': 'Blackboard \u304b\u3089\u53d7\u3051\u53d6\u3063\u305f ZIP \u3092\u958b\u304d\u3001\u4e00\u30bb\u30c3\u30b7\u30e7\u30f3\u3067\u5168\u5b66\u751f\u3092\u63a1\u70b9\u3057\u3001\u8fd4\u5374\u7528\u306e\u30de\u30fc\u30af\u6e08\u307f PDF \u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u2014\u2014\u3059\u3079\u3066\u30d6\u30e9\u30a6\u30b6\u3067\u3002',
+        'page.sub': 'Blackboard \u304b\u3089\u53d7\u3051\u53d6\u3063\u305f ZIP \u3092\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\u3057\u3001\u4e00\u30bb\u30c3\u30b7\u30e7\u30f3\u3067\u5168\u5b66\u751f\u3092\u63a1\u70b9\u3057\u3001\u8fd4\u5374\u7528\u306e\u30de\u30fc\u30af\u6e08\u307f PDF \u306e ZIP \u3092\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u2014\u2014\u3059\u3079\u3066\u30d6\u30e9\u30a6\u30b6\u3067\u3002',
         'cta.open': 'Annotarium \u3092\u958b\u304f',
-        's1.h2': 'Blackboard \u6a19\u6e96\u63a1\u70b9\u306e\u554f\u984c\u70b9',
-        's1.p1': 'Blackboard \u306e\u30d6\u30e9\u30a6\u30b6\u5185\u30a2\u30ce\u30c6\u30fc\u30bf\u306f\u77ed\u3044\u8ab2\u984c\u306b\u306f\u9069\u3057\u3066\u3044\u307e\u3059\u304c\u3001\u6280\u8853\u7684\u306a\u4f5c\u54c1\u3067\u306f\u3059\u3050\u306b\u30dc\u30c8\u30eb\u30cd\u30c3\u30af\u306b\u306a\u308a\u307e\u3059\u3002\u6570\u5b66\u30d5\u30a3\u30fc\u30c9\u30d0\u30c3\u30af\u7528\u306e LaTeX \u30b5\u30dd\u30fc\u30c8\u304c\u306a\u304f\u3001\u5b66\u751f\u9593\u3067\u540c\u3058\u8aac\u660e\u3092\u518d\u5229\u7528\u3059\u308b\u305f\u3081\u306e\u30b3\u30e1\u30f3\u30c8\u30e9\u30a4\u30d6\u30e9\u30ea\u3082\u306a\u304f\u3001100 \u4eba\u5206\u3092\u51e6\u7406\u3059\u308b\u969b\u306e\u5b66\u751f\u3054\u3068\u306e\u8aad\u307f\u8fbc\u307f\u3082\u9045\u3044\u3067\u3059\u3002',
-        's1.p2': '\u4e00\u822c\u7684\u306a\u56de\u907f\u7b56\u306f\u3001\u300cAssignment File Download\u300d\u3067\u5168\u63d0\u51fa\u3092 ZIP \u3068\u3057\u3066\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\u3057\u3001\u30c7\u30b9\u30af\u30c8\u30c3\u30d7\u30c4\u30fc\u30eb\u3067\u63a1\u70b9\u3057\u305f\u5f8c\u306b\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3057\u76f4\u3059\u65b9\u6cd5\u3067\u3059\u3002Annotarium \u306f\u305d\u306e\u30ef\u30fc\u30af\u30d5\u30ed\u30fc\u306b\u305d\u306e\u307e\u307e\u9069\u5408\u3057\u307e\u3059\u2014\u2014\u305f\u3060\u3057\u30d6\u30e9\u30a6\u30b6\u304b\u3089\u51fa\u308b\u5fc5\u8981\u306f\u3042\u308a\u307e\u305b\u3093\u3002',
-        's2.h2': '\u30b9\u30c6\u30c3\u30d7\u30d0\u30a4\u30b9\u30c6\u30c3\u30d7: Blackboard ZIP \u3092\u4e00\u62ec\u63a1\u70b9',
-        's2.step1H': '1. Blackboard \u304b\u3089\u63d0\u51fa ZIP \u3092\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9',
-        's2.step1P': 'Blackboard \u30b3\u30fc\u30b9\u3067 <strong>\u6210\u7e3e\u30bb\u30f3\u30bf\u30fc</strong> &rarr; \u8ab2\u984c\u5217 &rarr; <strong>Assignment File Download</strong> \u306b\u9032\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u5168\u5b66\u751f\u3092\u9078\u629e\u3057\u3066 ZIP \u3092\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\u3057\u307e\u3059\u3002',
-        's2.step2H': '2. Annotarium \u3092\u958b\u304d Blackboard \u30e2\u30fc\u30c9\u306b\u5207\u308a\u66ff\u3048',
-        's2.step2P': '<a href="https://app.annotarium.org">app.annotarium.org</a> \u3092\u958b\u304d\u3001\u30c4\u30fc\u30eb\u30d0\u30fc\u304b\u3089 Blackboard \u30e2\u30fc\u30c9\u306b\u5207\u308a\u66ff\u3048\u307e\u3059\u3002ZIP \u3092\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u306b\u30c9\u30ed\u30c3\u30d7\u3057\u3066\u304f\u3060\u3055\u3044\u3002Annotarium \u304c\u5b66\u751f\u3054\u3068\u306e\u30d5\u30a9\u30eb\u30c0\u69cb\u9020\u3092\u81ea\u52d5\u3067\u8aad\u307f\u53d6\u308a\u307e\u3059\u3002',
-        's2.step3H': '3. \u63a1\u70b9\u30b9\u30ad\u30fc\u30e0\u3092\u4e00\u5ea6\u3060\u3051\u8a2d\u5b9a',
-        's2.step3P': '\u8ab2\u984c\u306e\u8a2d\u554f\u3054\u3068\u306e\u70b9\u6570\uff08\u4f8b: Q1: 10\u3001Q2: 15\u3001Q3: 5\uff09\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002\u30b9\u30ad\u30fc\u30e0\u306f ZIP \u5185\u306e\u3059\u3079\u3066\u306e\u63d0\u51fa\u306b\u9069\u7528\u3055\u308c\u3001\u5b66\u751f\u3054\u3068\u306b\u72ec\u81ea\u306e\u5408\u8a08\u304c\u8a08\u7b97\u3055\u308c\u307e\u3059\u3002',
-        's2.step4H': '4. \u63a1\u70b9\u4e2d\u306b\u30b3\u30e1\u30f3\u30c8\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u69cb\u7bc9',
-        's2.step4P': '\u518d\u5229\u7528\u3057\u305f\u3044\u30b3\u30e1\u30f3\u30c8\uff08\u300c\u4ee3\u5165\u3088\u308a\u5fae\u5206\u3092\u5148\u306b\u300d\u3001\u300c\u7b26\u53f7\u898f\u7d04\u3092\u78ba\u8a8d\u300d\uff09\u3092\u521d\u3081\u3066\u66f8\u3044\u305f\u3068\u304d\u306b\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3057\u307e\u3059\u30022\u30013 \u4eba\u5206\u3082\u63a1\u70b9\u3059\u308c\u3070\u3001\u5fc5\u8981\u306a\u30b3\u30e1\u30f3\u30c8\u306e\u307b\u3068\u3093\u3069\u304c\u63c3\u3044\u307e\u3059\u3002',
-        's2.step5H': '5. \u5404\u63d0\u51fa\u3092\u63a1\u70b9',
-        's2.step5P': '\u30b5\u30a4\u30c9\u30d0\u30fc\u3067\u5b66\u751f\u9593\u3092\u79fb\u52d5\u3057\u307e\u3059\u3002\u30da\u30f3\u3001\u30cf\u30a4\u30e9\u30a4\u30c8\u3001LaTeX \u6570\u5f0f\u30c4\u30fc\u30eb\u3001\u30b3\u30e1\u30f3\u30c8\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u4f7f\u7528\u3002\u63a1\u70b9\u30b9\u30ad\u30fc\u30e0\u304c\u8a2d\u554f\u3054\u3068\u306e\u5408\u8a08\u3092\u8ffd\u8de1\u3057\u307e\u3059\u3002',
-        's2.step6H': '6. \u63a1\u70b9\u6e08\u307f PDF \u3092\u30d5\u30a9\u30eb\u30c0\u306b\u30a8\u30af\u30b9\u30dd\u30fc\u30c8',
-        's2.step6P': 'Annotarium \u306f\u63a1\u70b9\u6e08\u307f\u306e\u5168\u63d0\u51fa\u3092\u30d5\u30e9\u30c3\u30c8\u5316\u3055\u308c\u305f PDF \u306e\u30d5\u30a9\u30eb\u30c0\u3068\u3057\u3066\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u3057\u307e\u3059\u3002\u5143\u306e\u30d5\u30a1\u30a4\u30eb\u540d\u3092\u4fdd\u6301\u3059\u308b\u305f\u3081\u3001Blackboard \u306e\u4e00\u62ec\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3067\u8fd4\u5374\u3067\u304d\u307e\u3059\u3002',
+        's1.h2': '\u30c7\u30b9\u30af\u30c8\u30c3\u30d7\u307e\u305f\u306f iPad\u2014\u2014Annotarium \u304c\u81ea\u52d5\u691c\u51fa',
+        's1.p': 'Annotarium \u306f\u30c7\u30d0\u30a4\u30b9\u306b\u5fdc\u3058\u3066\u9069\u5207\u306a\u30a4\u30f3\u30dd\u30fc\u30c8\u9078\u629e\u80a2\u3092\u8868\u793a\u3057\u307e\u3059\u3002\u5207\u308a\u66ff\u3048\u308b\u300c\u30e2\u30fc\u30c9\u300d\u306f\u3042\u308a\u307e\u305b\u3093\u3002',
+        's1.desktop.h': '\u30c7\u30b9\u30af\u30c8\u30c3\u30d7\uff08Chrome / Edge\uff09', 's1.desktop.p': '\u30d5\u30a1\u30a4\u30eb \u2192 <strong>Blackboard folder</strong>\u3002\u5c55\u958b\u6e08\u307f\u306e\u63d0\u51fa\u30d5\u30a9\u30eb\u30c0\u3092\u9078\u629e\u3002',
+        's1.ipad.h': 'iPad / \u30e2\u30d0\u30a4\u30eb', 's1.ipad.p': '\u30d5\u30a1\u30a4\u30eb \u2192 <strong>Blackboard ZIP</strong>\u3002ZIP \u3092\u305d\u306e\u307e\u307e\u9078\u629e\u2014\u2014\u5c55\u958b\u4e0d\u8981\u3002',
+        's2.h2': '\u30b9\u30c6\u30c3\u30d7\u30d0\u30a4\u30b9\u30c6\u30c3\u30d7',
+        's2.step1H': '1. Blackboard \u304b\u3089\u63d0\u51fa ZIP \u3092\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9', 's2.step1P': 'Blackboard \u30b3\u30fc\u30b9\u3067 <strong>\u6210\u7e3e\u30bb\u30f3\u30bf\u30fc</strong> &rarr; \u8ab2\u984c\u5217 &rarr; <strong>Assignment File Download</strong> \u306b\u9032\u3093\u3067\u3001\u5168\u5b66\u751f\u3092\u9078\u629e\u3057\u3066 ZIP \u3092\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\u3057\u307e\u3059\u3002',
+        's2.step2H': '2. \u30c7\u30b9\u30af\u30c8\u30c3\u30d7\u3067\u306f\u30d5\u30a9\u30eb\u30c0\u306b\u5c55\u958b\uff08iPad \u306f\u30b9\u30ad\u30c3\u30d7\uff09', 's2.step2P': '\u30c7\u30b9\u30af\u30c8\u30c3\u30d7\u3067\u306f\u3001\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\u3057\u305f\u30d5\u30a1\u30a4\u30eb\u3092\u5c55\u958b\u3057\u3001\u5b66\u751f\u3054\u3068\u306e\u30b5\u30d6\u30d5\u30a9\u30eb\u30c0\u3068 Blackboard \u30e1\u30bf\u30c7\u30fc\u30bf\u30d5\u30a1\u30a4\u30eb\u3092\u542b\u3080\u30d5\u30a9\u30eb\u30c0\u306b\u3057\u3066\u304f\u3060\u3055\u3044\u3002iPad \u3084\u30e2\u30d0\u30a4\u30eb\u3067\u306f\u3053\u306e\u624b\u9806\u306f\u4e0d\u8981\u2014\u2014Annotarium \u304c ZIP \u3092\u76f4\u63a5\u958b\u304d\u307e\u3059\u3002',
+        's2.step3H': '3. Annotarium \u3067\u63d0\u51fa\u3092\u958b\u304f', 's2.step3P': '<a href="https://app.annotarium.org">app.annotarium.org</a> \u3092\u958b\u304d\u3001<strong>\u30d5\u30a1\u30a4\u30eb</strong> \u30e1\u30cb\u30e5\u30fc\u3092\u958b\u3044\u3066\uff1a',
+        's2.step3LiA': '\u30c7\u30b9\u30af\u30c8\u30c3\u30d7\u3067\u306f <strong>Blackboard folder</strong> \u3092\u9078\u3073\u3001\u5c55\u958b\u6e08\u307f\u30d5\u30a9\u30eb\u30c0\u3092\u9078\u629e\u3002',
+        's2.step3LiB': 'iPad / \u30e2\u30d0\u30a4\u30eb\u3067\u306f <strong>Blackboard ZIP</strong> \u3092\u9078\u3073\u3001ZIP \u3092\u9078\u629e\u3002',
+        's2.step3Tail': '\u30b5\u30a4\u30c9\u30d0\u30fc\u306b\u5b66\u751f\u3054\u3068\u306e\u30a8\u30f3\u30c8\u30ea\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002',
+        's2.step4H': '4. \u5b66\u751f\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066 Load', 's2.step4P': '\u30b5\u30a4\u30c9\u30d0\u30fc\u3067\u5b66\u751f\u3092\u30af\u30ea\u30c3\u30af\u3057\u3001\u4e0a\u90e8\u30c4\u30fc\u30eb\u30d0\u30fc\u306e <strong>Load</strong> \u3092\u62bc\u3059\u3068\u305d\u306e\u5b66\u751f\u306e PDF \u304c\u4e3b\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u306b\u958b\u304d\u307e\u3059\u3002',
+        's2.step5H': '5. \u63a1\u70b9\u30b9\u30ad\u30fc\u30e0\u3092\u4e00\u5ea6\u3060\u3051\u8a2d\u5b9a', 's2.step5P': '<strong>Scheme</strong> \u30d1\u30cd\u30eb\u3092\u958b\u304d\u3001\u3053\u306e\u8ab2\u984c\u306e\u8a2d\u554f\u3054\u3068\u306e\u70b9\u6570\u3068\u30b5\u30d6\u30d1\u30fc\u30c8\u3092\u5b9a\u7fa9\u3057\u307e\u3059\uff08\u4f8b: Q1: 10\u3001Q2: 15\u3001Q3: 5\uff09\u3002\u30b9\u30ad\u30fc\u30e0\u306e\u69cb\u9020\u306f\u5168\u5b66\u751f\u3067\u518d\u5229\u7528\u3055\u308c\u3001\u5404\u5b66\u751f\u306e\u70b9\u6570\u306f <code>Marking_progress/[\u5b66\u751f].ankx.json</code> \u306b\u72ec\u7acb\u4fdd\u5b58\u3055\u308c\u307e\u3059\u3002',
+        's2.step6H': '6. \u63a1\u70b9\u4e2d\u306b\u30b3\u30e1\u30f3\u30c8\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u69cb\u7bc9', 's2.step6P': '\u521d\u3081\u3066\u518d\u5229\u7528\u3057\u305f\u3044\u30b3\u30e1\u30f3\u30c8\u3092\u66f8\u3044\u305f\u3068\u304d\u306b\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3057\u307e\u3059\u3002\u30e9\u30a4\u30d6\u30e9\u30ea\u306f\u30d6\u30e9\u30a6\u30b6\u306b\u4fdd\u5b58\u3055\u308c\u3001\u3053\u306e\u30bb\u30c3\u30b7\u30e7\u30f3\u306e\u3059\u3079\u3066\u306e\u5b66\u751f\u9593\u3067\u5171\u6709\u3055\u308c\u307e\u3059\u2014\u2014\u5b66\u751f 3 \u306b\u66f8\u3044\u305f\u30b3\u30e1\u30f3\u30c8\u304c\u5b66\u751f 73 \u306b\u3082\u4f7f\u3048\u307e\u3059\u3002',
+        's2.step7H': '7. LaTeX\u3001\u30da\u30f3\u3001\u30b3\u30e1\u30f3\u30c8\u30e9\u30a4\u30d6\u30e9\u30ea\u3067\u63a1\u70b9', 's2.step7P': '\u30da\u30f3\u3001\u30cf\u30a4\u30e9\u30a4\u30c8\u3001LaTeX \u6570\u5f0f\u30c4\u30fc\u30eb\u3001\u30b3\u30e1\u30f3\u30c8\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u4f7f\u3044\u307e\u3059\u3002\u63a1\u70b9\u30b9\u30ad\u30fc\u30e0\u304c\u8a2d\u554f\u3054\u3068\u306e\u7d2f\u8a08\u3068\u5168\u4f53\u306e\u5408\u8a08\u3092\u8ffd\u8de1\u3057\u307e\u3059\u3002',
+        's2.step8H': '8. \u5b66\u751f\u304c\u7d42\u308f\u3063\u305f\u3089 "Marked!" \u3092\u62bc\u3059', 's2.step8P': '<strong>Marked!</strong> \u30dc\u30bf\u30f3\u3067\u30d5\u30e9\u30c3\u30c8\u5316\u3055\u308c\u305f\u30de\u30fc\u30af\u6e08\u307f PDF \u3068\u8a72\u5b66\u751f\u306e\u63a1\u70b9\u30b9\u30ad\u30fc\u30e0\u3092\u4fdd\u5b58\u3057\u3001\u30b5\u30a4\u30c9\u30d0\u30fc\u306b\u623b\u3063\u3066\u6b21\u306e\u5b66\u751f\u3092\u9078\u3079\u307e\u3059\u3002\u63a1\u70b9\u6e08\u307f\u306e\u5b66\u751f\u306b\u306f\u30b5\u30a4\u30c9\u30d0\u30fc\u3067\u7dd1\u306e\u30c1\u30a7\u30c3\u30af\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002',
+        's2.step9H': '9. \u6700\u5f8c\u306b "Finito!" \u3092\u62bc\u3059', 's2.step9P': '\u5168\u5b66\u751f\u306e\u63a1\u70b9\u304c\u7d42\u308f\u308b\u3068\u30c4\u30fc\u30eb\u30d0\u30fc\u306b <strong>Finito!</strong> \u30dc\u30bf\u30f3\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002\u3053\u308c\u306f\u63a1\u70b9\u6e08\u307f\u306e\u5168\u63d0\u51fa\u3092\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u3057\u3001Blackboard \u306e\u4e00\u62ec\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3067\u8fd4\u5374\u3067\u304d\u308b ZIP \u3092\u751f\u6210\u3057\u307e\u3059\u3002',
         's3.h2': '\u3053\u306e\u30ef\u30fc\u30af\u30d5\u30ed\u30fc\u304c\u901f\u3044\u7406\u7531',
-        's3.li1': '<strong>\u4e00\u3064\u306e\u63a1\u70b9\u30b9\u30ad\u30fc\u30e0\u3067\u591a\u304f\u306e\u5b66\u751f</strong>\u2014\u2014\u4e00\u5ea6\u8a2d\u5b9a\u3059\u308c\u3070\u3069\u3053\u306b\u3067\u3082\u9069\u7528\u3002',
+        's3.li1': '<strong>\u4e00\u3064\u306e\u63a1\u70b9\u30b9\u30ad\u30fc\u30e0\u3067\u591a\u304f\u306e\u5b66\u751f</strong>\u2014\u2014\u4e00\u5ea6\u5b9a\u7fa9\u3059\u308c\u3070\u3069\u3053\u306b\u3067\u3082\u9069\u7528\u3002',
         's3.li2': '<strong>\u4e00\u3064\u306e\u30b3\u30e1\u30f3\u30c8\u30e9\u30a4\u30d6\u30e9\u30ea\u3067\u591a\u304f\u306e\u5b66\u751f</strong>\u2014\u2014\u5b66\u751f 3 \u306b\u66f8\u3044\u305f\u30b3\u30e1\u30f3\u30c8\u304c\u5b66\u751f 73 \u306b\u3082\u4f7f\u3048\u307e\u3059\u3002',
         's3.li3': '<strong>LaTeX \u30d5\u30a3\u30fc\u30c9\u30d0\u30c3\u30af</strong>\u2014\u2014\u8aac\u660e\u3059\u308b\u4ee3\u308f\u308a\u306b <code>$\\partial f / \\partial x$</code> \u3092\u5165\u529b\u3002',
         's3.li4': '<strong>\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u9045\u5ef6\u306a\u3057</strong>\u2014\u2014\u3059\u3079\u3066\u30d6\u30e9\u30a6\u30b6\u3067\u52d5\u4f5c\u3057\u3001\u30ca\u30d3\u30b2\u30fc\u30b7\u30e7\u30f3\u306f\u5373\u6642\u3002',
-        's3.li5': '<strong>\u30c7\u30fc\u30bf\u304c\u30ce\u30fc\u30c8\u3092\u96e2\u308c\u306a\u3044</strong>\u2014\u2014\u63d0\u51fa\u306f\u30ed\u30fc\u30ab\u30eb\u306b\u7559\u307e\u308a\u307e\u3059\u3002',
+        's3.li5': '<strong>\u30c7\u30fc\u30bf\u304c\u30c7\u30d0\u30a4\u30b9\u3092\u96e2\u308c\u306a\u3044</strong>\u2014\u2014\u63d0\u51fa\u306f\u30ed\u30fc\u30ab\u30eb\u306b\u7559\u307e\u308a\u307e\u3059\u3002',
         'faq.h2': 'FAQ',
-        'faq.q1': 'Annotarium \u306f Blackboard \u306e ZIP \u5f62\u5f0f\u3092\u76f4\u63a5\u51e6\u7406\u3067\u304d\u307e\u3059\u304b\uff1f', 'faq.a1': '\u306f\u3044\u3002Annotarium \u306f Blackboard \u306e\u300cAssignment File Download\u300d\u304c\u751f\u6210\u3059\u308b ZIP \u3092\u8aad\u307f\u8fbc\u307f\u307e\u3059\u3002\u5b66\u751f\u3054\u3068\u306e\u30d5\u30a9\u30eb\u30c0\u69cb\u9020\u3068\u30e1\u30bf\u30c7\u30fc\u30bf\u30d5\u30a1\u30a4\u30eb\u3082\u542b\u307f\u307e\u3059\u3002',
-        'faq.q2': '\u591a\u304f\u306e\u5b66\u751f\u306b\u540c\u3058\u30b3\u30e1\u30f3\u30c8\u3092\u9069\u7528\u3067\u304d\u307e\u3059\u304b\uff1f', 'faq.a2': '\u306f\u3044\u3002\u30b3\u30e1\u30f3\u30c8\u3092\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4e00\u5ea6\u4fdd\u5b58\u3059\u308c\u3070\u3001\u30af\u30ea\u30c3\u30af\u4e00\u3064\u3067\u4efb\u610f\u306e\u63d0\u51fa\u306b\u9069\u7528\u3067\u304d\u307e\u3059\u3002\u30b3\u30e1\u30f3\u30c8\u306b\u306f LaTeX\u3001\u753b\u50cf\u3001\u69cb\u9020\u5316\u3055\u308c\u305f\u30d5\u30a3\u30fc\u30c9\u30d0\u30c3\u30af\u30c6\u30ad\u30b9\u30c8\u3092\u542b\u3081\u3089\u308c\u307e\u3059\u3002',
-        'faq.q3': '\u5b66\u751f\u306e PDF \u306f\u3069\u3053\u304b\u306b\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3055\u308c\u307e\u3059\u304b\uff1f', 'faq.a3': '\u3044\u3044\u3048\u3002ZIP \u306f\u30d6\u30e9\u30a6\u30b6\u5185\u3067\u5b8c\u5168\u306b\u51e6\u7406\u3055\u308c\u307e\u3059\u3002\u63d0\u51fa\u306e\u3044\u304b\u306a\u308b\u90e8\u5206\u3082\u30b5\u30fc\u30d0\u30fc\u306b\u9001\u3089\u308c\u307e\u305b\u3093\u3002',
-        'faq.q4': '\u63a1\u70b9\u3057\u305f PDF \u3092 Blackboard \u306b\u518d\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3067\u304d\u307e\u3059\u304b\uff1f', 'faq.a4': '\u306f\u3044\u3002\u63a1\u70b9\u6e08\u307f\u306e\u63d0\u51fa\u3092\u30d5\u30e9\u30c3\u30c8\u5316\u3055\u308c\u305f PDF \u306e\u30d5\u30a9\u30eb\u30c0\u3068\u3057\u3066\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u3057\u307e\u3059\u3002\u5404\u30d5\u30a1\u30a4\u30eb\u306f\u5143\u306e\u30d5\u30a1\u30a4\u30eb\u540d\u3092\u4fdd\u6301\u3057\u3066\u3044\u308b\u305f\u3081\u3001Blackboard \u306e\u6a19\u6e96\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3067\u5b66\u751f\u306b\u8fd4\u5374\u3067\u304d\u307e\u3059\u3002',
-        'rel.h3': '\u95a2\u9023\u30da\u30fc\u30b8',
-        'rel.acad': '\u5b66\u8853\u8005\u306e\u305f\u3081\u306e Annotarium\u2014\u2014\u8a73\u7d30',
-        'rel.latex': 'LaTeX \u3067 PDF \u306b\u6ce8\u91c8\u3092\u4ed8\u3051\u308b\u65b9\u6cd5',
+        'faq.q1': 'Annotarium \u306f Blackboard \u306e ZIP \u3092\u76f4\u63a5\u53d7\u3051\u53d6\u308a\u307e\u3059\u304b\uff1f', 'faq.a1': 'iPad \u3068\u30e2\u30d0\u30a4\u30eb\u3067\u306f\u306f\u3044\u2014\u2014\u30d5\u30a1\u30a4\u30eb \u2192 Blackboard ZIP \u3092\u4f7f\u3044\u307e\u3059\u3002\u30c7\u30b9\u30af\u30c8\u30c3\u30d7\u3067\u306f\u307e\u305a\u5c55\u958b\u3057\u3066\u30d5\u30a1\u30a4\u30eb \u2192 Blackboard folder \u3092\u4f7f\u3044\u307e\u3059\u3002\u3053\u308c\u306f\u30c7\u30b9\u30af\u30c8\u30c3\u30d7\u306e\u30a4\u30f3\u30dd\u30fc\u30c8\u304c\u30d6\u30e9\u30a6\u30b6\u306e\u30d5\u30a9\u30eb\u30c0\u30d4\u30c3\u30ab\u30fc\u3092\u4f7f\u3046\u305f\u3081\u3067\u3059\u3002Annotarium \u304c\u30c7\u30d0\u30a4\u30b9\u3092\u81ea\u52d5\u691c\u51fa\u3057\u3066\u6b63\u3057\u3044\u9078\u629e\u80a2\u3092\u8868\u793a\u3057\u307e\u3059\u3002',
+        'faq.q2': '\u591a\u304f\u306e\u5b66\u751f\u306b\u540c\u3058\u30b3\u30e1\u30f3\u30c8\u3092\u9069\u7528\u3067\u304d\u307e\u3059\u304b\uff1f', 'faq.a2': '\u306f\u3044\u3002\u30b3\u30e1\u30f3\u30c8\u30e9\u30a4\u30d6\u30e9\u30ea\u306f\u30d6\u30e9\u30a6\u30b6\u306b\u4fdd\u5b58\u3055\u308c\u3001\u3053\u306e\u30bb\u30c3\u30b7\u30e7\u30f3\u306e\u5168\u5b66\u751f\u9593\u3067\u5171\u6709\u3055\u308c\u307e\u3059\u3002\u4e00\u5ea6\u4fdd\u5b58\u3057\u305f\u3089\u4efb\u610f\u306e\u63d0\u51fa\u306b\u30af\u30ea\u30c3\u30af\u4e00\u3064\u3067\u9069\u7528\u3067\u304d\u307e\u3059\u3002\u30b3\u30e1\u30f3\u30c8\u306b\u306f LaTeX\u3001\u753b\u50cf\u3001\u69cb\u9020\u5316\u3055\u308c\u305f\u30d5\u30a3\u30fc\u30c9\u30d0\u30c3\u30af\u30c6\u30ad\u30b9\u30c8\u3092\u542b\u3081\u3089\u308c\u307e\u3059\u3002',
+        'faq.q3': '\u63a1\u70b9\u30b9\u30ad\u30fc\u30e0\u306f\u5b66\u751f\u3054\u3068\u306b\u30ea\u30bb\u30c3\u30c8\u3055\u308c\u307e\u3059\u304b\uff1f', 'faq.a3': '\u69cb\u9020\uff08\u8a2d\u554f\u6570\u3001\u30b5\u30d6\u30d1\u30fc\u30c8\u3001\u6e80\u70b9\uff09\u306f\u4fdd\u6301\u3055\u308c\u307e\u3059\u3002\u70b9\u6570\u81ea\u4f53\u306f\u5404\u5b66\u751f\u3054\u3068\u306b Marking_progress \u30d5\u30a9\u30eb\u30c0\u5185\u306b\u4fdd\u5b58\u3055\u308c\u308b\u305f\u3081\u3001\u5404\u5b66\u751f\u306f\u81ea\u8eab\u306e\u5408\u8a08\u3092\u4fdd\u3061\u307e\u3059\u3002\u4fdd\u5b58\u6e08\u307f\u30b9\u30ad\u30fc\u30e0\u304c\u3042\u308b\u5b66\u751f\u3092\u958b\u304f\u3068\u3001Annotarium \u304c\u81ea\u52d5\u7684\u306b\u518d\u30ed\u30fc\u30c9\u3057\u307e\u3059\u3002',
+        'faq.q4': '\u5b66\u751f\u306e PDF \u306f\u3069\u3053\u304b\u306b\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3055\u308c\u307e\u3059\u304b\uff1f', 'faq.a4': '\u3044\u3044\u3048\u3002\u30d5\u30a9\u30eb\u30c0\u3084 ZIP \u306f\u30d6\u30e9\u30a6\u30b6\u5185\u3067\u5b8c\u5168\u306b\u51e6\u7406\u3055\u308c\u307e\u3059\u3002\u63d0\u51fa\u306e\u3044\u304b\u306a\u308b\u90e8\u5206\u3082\u30b5\u30fc\u30d0\u30fc\u306b\u9001\u3089\u308c\u307e\u305b\u3093\u3002',
+        'faq.q5': '\u63a1\u70b9\u3057\u305f PDF \u3092 Blackboard \u306b\u518d\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3067\u304d\u307e\u3059\u304b\uff1f', 'faq.a5': '\u306f\u3044\u3002"Finito!" \u3092\u62bc\u3059\u3068 Annotarium \u306f\u63a1\u70b9\u6e08\u307f\u306e\u63d0\u51fa\u306e ZIP \u3092\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u3057\u307e\u3059\u3002\u5404\u30d5\u30a1\u30a4\u30eb\u306f\u5143\u306e\u30d5\u30a1\u30a4\u30eb\u540d\u3092\u4fdd\u6301\u3059\u308b\u305f\u3081\u3001Blackboard \u306e\u4e00\u62ec\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3067\u5b66\u751f\u306b\u8fd4\u5374\u3067\u304d\u307e\u3059\u3002',
+        'rel.h3': '\u95a2\u9023\u30da\u30fc\u30b8', 'rel.acad': '\u5b66\u8853\u8005\u306e\u305f\u3081\u306e Annotarium\u2014\u2014\u8a73\u7d30', 'rel.latex': 'LaTeX \u3067 PDF \u306b\u6ce8\u91c8\u3092\u4ed8\u3051\u308b\u65b9\u6cd5',
         'ft.home': '\u30db\u30fc\u30e0', 'ft.faq': 'FAQ', 'ft.privacy': '\u30d7\u30e9\u30a4\u30d0\u30b7\u30fc', 'ft.security': '\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3'
       }
     };
@@ -382,7 +422,8 @@
       var dict=T[lang];
       document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(dict[k]!=null){if(el.tagName==='TITLE')document.title=dict[k];else el.textContent=dict[k];}});
       document.querySelectorAll('[data-i18n-html]').forEach(function(el){var k=el.getAttribute('data-i18n-html');if(dict[k]!=null)el.innerHTML=dict[k];});
-      var lbl=document.getElementById('lang-label'); if(lbl)lbl.textContent=labels[lang];}
+      var lbl=document.getElementById('lang-label'); if(lbl)lbl.textContent=labels[lang];
+      document.querySelectorAll('#lang-menu button[data-lang]').forEach(function(b){var a=b.getAttribute('data-lang')===lang;b.style.background=a?'#eff6ff':'';b.style.color=a?'#1d4ed8':'#334155';b.style.fontWeight=a?'600':'';});}
     var saved='en'; try{saved=localStorage.getItem('app-language')||'en';}catch(e){} apply(saved);
     var btn=document.getElementById('lang-btn'); var menu=document.getElementById('lang-menu');
     btn.addEventListener('click',function(e){e.stopPropagation();menu.classList.toggle('open');});
