@@ -507,22 +507,50 @@
     </section>
 
     <!-- Use cases & guides (internal linking for SEO) -->
-    <section class="bg-slate-50 border-t border-slate-200 py-16">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-slate-900 text-center mb-2">Explore by use case</h2>
-        <p class="text-slate-600 text-center mb-10">Dedicated guides for the most common Annotarium workflows.</p>
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <a href="/for-academics" class="block bg-white border border-slate-200 rounded-xl p-6 hover:border-blue-400 hover:shadow-md transition-all">
-            <h3 class="font-semibold text-slate-900 mb-2">Annotarium for academics</h3>
-            <p class="text-sm text-slate-600">PDF marking, LaTeX feedback, rubrics, and reusable comments — built for the academic workflow.</p>
+    <section id="use-cases" class="py-24 bg-white relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl mb-4">Explore by use case</h2>
+          <p class="text-lg text-slate-600">Dedicated guides for the most common Annotarium workflows.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- For Academics -->
+          <a href="/for-academics" class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300 block">
+            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+              <svg class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Annotarium for academics</h3>
+            <p class="text-slate-600 leading-relaxed">PDF marking, LaTeX feedback, rubrics, and reusable comments — built for the academic workflow.</p>
           </a>
-          <a href="/blackboard-bulk-marking" class="block bg-white border border-slate-200 rounded-xl p-6 hover:border-blue-400 hover:shadow-md transition-all">
-            <h3 class="font-semibold text-slate-900 mb-2">Bulk-mark Blackboard submissions</h3>
-            <p class="text-sm text-slate-600">Open the Blackboard ZIP and mark every student in one session — no upload, no sign-in.</p>
+
+          <!-- Blackboard Bulk Marking -->
+          <a href="/blackboard-bulk-marking" class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300 block">
+            <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors duration-300">
+              <svg class="w-6 h-6 text-indigo-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Bulk-mark Blackboard submissions</h3>
+            <p class="text-slate-600 leading-relaxed">Open the Blackboard ZIP and mark every student in one session — no upload, no sign-in.</p>
           </a>
-          <a href="/how-to-annotate-pdf-with-latex" class="block bg-white border border-slate-200 rounded-xl p-6 hover:border-blue-400 hover:shadow-md transition-all">
-            <h3 class="font-semibold text-slate-900 mb-2">How to annotate a PDF with LaTeX</h3>
-            <p class="text-sm text-slate-600">Step-by-step guide to adding properly typeset LaTeX equations directly to any PDF.</p>
+
+          <!-- LaTeX Tutorial -->
+          <a href="/how-to-annotate-pdf-with-latex" class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-200 transition-all duration-300 block">
+            <div class="w-12 h-12 bg-sky-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-sky-600 transition-colors duration-300">
+              <svg class="w-6 h-6 text-sky-600 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+                <line x1="13" y1="4" x2="11" y2="20"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">How to annotate a PDF with LaTeX</h3>
+            <p class="text-slate-600 leading-relaxed">Step-by-step guide to adding properly typeset LaTeX equations directly to any PDF.</p>
           </a>
         </div>
       </div>
