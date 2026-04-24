@@ -43,7 +43,10 @@
     try {
       var body = JSON.stringify({ session: sid, page: page, event: event, data: data || null, referrer: referrer });
       if (navigator.sendBeacon) {
-        navigator.sendBeacon(ENDPOINT, new Blob([body], { type: 'application/json' }));
+        // text/plain avoids a CORS preflight; sendBeacon can't preflight and
+        // mobile Safari silently drops the request if the MIME is application/json.
+        // Server does request.text() + JSON.parse() so Content-Type is irrelevant.
+        navigator.sendBeacon(ENDPOINT, new Blob([body], { type: 'text/plain' }));
       } else {
         fetch(ENDPOINT, {
           method: 'POST',
