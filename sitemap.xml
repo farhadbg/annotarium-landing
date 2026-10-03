@@ -21,23 +21,23 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://annotarium.org/faq.html</loc>
+    <loc>https://annotarium.org/faq</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://annotarium.org/security.html</loc>
+    <loc>https://annotarium.org/security</loc>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://annotarium.org/privacy.html</loc>
+    <loc>https://annotarium.org/privacy</loc>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://app.annotarium.org/</loc>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

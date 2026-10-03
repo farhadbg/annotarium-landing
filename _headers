@@ -7,3 +7,10 @@
   X-Content-Type-Options: nosniff
   Cross-Origin-Resource-Policy: same-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# Keep the pages.dev copies out of search results; annotarium.org is the canonical site
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
