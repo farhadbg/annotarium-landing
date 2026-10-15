@@ -5,7 +5,8 @@
   'use strict';
 
   var ENDPOINT = 'https://analytics.annotarium.org/event';
-  var HEARTBEAT_MS = 15000;
+  var ENGAGEMENT_FLUSH_MS = 5 * 60 * 1000;
+  var MAX_ENGAGEMENT_SEC = 3600; // the collector rejects more
   var APP_USED_DELAY_MS = 30000;
   var STORAGE_KEY = '_aa_sid';
 
@@ -62,22 +63,33 @@
   // ----- Core events (fire on every page) -----
   send('pageview');
 
-  var hbId = null;
-  function startHB() { if (!hbId) hbId = setInterval(function () {
-    if (document.visibilityState === 'visible') send('heartbeat');
-  }, HEARTBEAT_MS); }
-  function stopHB() { if (hbId) { clearInterval(hbId); hbId = null; } }
+  // Time on page: visible seconds, sent when the tab is hidden or closed and
+  // every 5 minutes while it stays visible (one row, not one every 15 s).
+  var visibleSince = document.visibilityState === 'visible' ? Date.now() : 0;
+  var visibleMs = 0;
+  function sendEngagement() {
+    if (visibleSince) {
+      visibleMs += Date.now() - visibleSince;
+      visibleSince = document.visibilityState === 'visible' ? Date.now() : 0;
+    }
+    var sec = Math.round(visibleMs / 1000);
+    if (sec > 0) {
+      send('engagement', { sec: Math.min(sec, MAX_ENGAGEMENT_SEC) });
+      visibleMs = 0;
+    }
+  }
+  setInterval(function () {
+    if (document.visibilityState === 'visible') sendEngagement();
+  }, ENGAGEMENT_FLUSH_MS);
 
   document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'visible') startHB();
-    else { send('heartbeat'); stopHB(); }
+    if (document.visibilityState === 'visible') visibleSince = Date.now();
+    else sendEngagement();
   });
-  if (document.visibilityState === 'visible') startHB();
 
   window.addEventListener('pagehide', function () {
-    send('heartbeat');
+    sendEngagement();
     send('pagehide');
-    stopHB();
   });
 
   // ----- Landing-site click events (harmless on app side — selectors won't match) -----
